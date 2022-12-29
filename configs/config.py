@@ -28,21 +28,21 @@ class Conf():
         cursor.execute(
             """"
             CREATE TABLE IF NOT EXISTS tb_setor (
-                IdSetor INTEGER PRIMARY KEY,
-                nome varchar(50)
+                IdSetor INT PRIMARY KEY,
+                nome text)
                 """)
         db.commit()
 
         cursor.execute(
             """""
             CREATE TABLE IF NOT EXISTS tb_funcionario (
-                IdFuncionario INTEGER PRIMARY KEY AUTOINCREMENT,
-                Funcionario varchar(50),
-                Setor varchar(50),
-                ramal_interno varchar(50),
-                ramal_externo varchar(50),
-                celular varchar(50),
-                Id_setor INTEGER foreign key REFERENCES tb_setor(IdSetor)
+                IdFuncionario  PRIMARY KEY AUTOINCREMENT,
+                Funcionario text,
+                Setor text,
+                ramal_interno text,
+                ramal_externo text,
+                celular text,
+                Id_setor INT foreign key REFERENCES tb_setor(IdSetor)
             """
         )
         db.commit()
