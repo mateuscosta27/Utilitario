@@ -9,16 +9,12 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1134</width>
+    <width>1356</width>
     <height>686</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Modulo Principal</string>
-  </property>
-  <property name="windowIcon">
-   <iconset>
-    <normaloff>../src/main_icon.svg</normaloff>../src/main_icon.svg</iconset>
   </property>
   <property name="iconSize">
    <size>
@@ -174,7 +170,7 @@ QPushButton:pressed{
             </property>
             <property name="icon">
              <iconset>
-              <normaloff>../src/menu_icon.svg</normaloff>../src/menu_icon.svg</iconset>
+              <normaloff>../src/icon_menu.svg</normaloff>../src/icon_menu.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -338,7 +334,7 @@ border-right-color: #0954B2;</string>
               <number>10</number>
              </property>
              <property name="topMargin">
-              <number>0</number>
+              <number>25</number>
              </property>
              <property name="rightMargin">
               <number>0</number>
@@ -370,7 +366,6 @@ border-right-color: #0954B2;</string>
                 <font>
                  <family>MS Shell Dlg 2</family>
                  <pointsize>11</pointsize>
-                 <weight>9</weight>
                  <italic>false</italic>
                  <bold>false</bold>
                 </font>
@@ -417,12 +412,12 @@ QPushButton:pressed{
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../src/collect_icon.svg</normaloff>../src/collect_icon.svg</iconset>
+                 <normaloff>../src/icon_ramal.svg</normaloff>../src/icon_ramal.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
-                 <width>45</width>
-                 <height>30</height>
+                 <width>35</width>
+                 <height>35</height>
                 </size>
                </property>
               </widget>
@@ -480,12 +475,12 @@ QPushButton:pressed{
                </property>
                <property name="icon">
                 <iconset>
-                 <normaloff>../src/games_icon.svg</normaloff>../src/games_icon.svg</iconset>
+                 <normaloff>../src/icon_call.svg</normaloff>../src/icon_call.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
-                 <width>45</width>
-                 <height>30</height>
+                 <width>35</width>
+                 <height>35</height>
                 </size>
                </property>
               </widget>
@@ -595,10 +590,6 @@ QPushButton:pressed{
                <property name="text">
                 <string>Sobre</string>
                </property>
-               <property name="icon">
-                <iconset>
-                 <normaloff>src/about_icon.svg</normaloff>src/about_icon.svg</iconset>
-               </property>
                <property name="iconSize">
                 <size>
                  <width>25</width>
@@ -677,484 +668,6 @@ QPushButton:pressed{
               <number>0</number>
              </property>
              <item>
-              <widget class="QFrame" name="frame">
-               <property name="minimumSize">
-                <size>
-                 <width>0</width>
-                 <height>100</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>100</height>
-                </size>
-               </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
-               </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QGridLayout" name="gridLayout">
-                <item row="0" column="0">
-                 <widget class="QComboBox" name="cbb_select_setor">
-                  <property name="minimumSize">
-                   <size>
-                    <width>0</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                  <property name="sizeIncrement">
-                   <size>
-                    <width>0</width>
-                    <height>0</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>Flow Docs</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Folha</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Gerente</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Recepção</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Service Desk</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>SIS - SIE - SAS</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>SSE - SED - PORTAL - PATRIMONIO</string>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Tributário</string>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-                <item row="0" column="1">
-                 <widget class="QLineEdit" name="le_search_name">
-                  <property name="minimumSize">
-                   <size>
-                    <width>250</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
-                  </property>
-                  <property name="placeholderText">
-                   <string>Nome do funcionário</string>
-                  </property>
-                 </widget>
-                </item>
-                <item row="0" column="2">
-                 <widget class="QGroupBox" name="groupBox">
-                  <property name="minimumSize">
-                   <size>
-                    <width>450</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>450</width>
-                    <height>60</height>
-                   </size>
-                  </property>
-                  <property name="title">
-                   <string/>
-                  </property>
-                  <widget class="QPushButton" name="btn_coletar_5">
-                   <property name="geometry">
-                    <rect>
-                     <x>10</x>
-                     <y>6</y>
-                     <width>100</width>
-                     <height>45</height>
-                    </rect>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>100</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="baseSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>MS Shell Dlg 2</family>
-                     <pointsize>11</pointsize>
-                     <weight>9</weight>
-                     <italic>false</italic>
-                     <bold>false</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-	border-style: none;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #4195FF;
-	border-radius: 12px;
-	border-bottom-color: rgb(4, 35, 38);
-	border-right-color:  rgb(4, 35, 38);
-}
-QPushButton:hover{
-	border-style: none;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #0954B2;
-	border-radius: 12px;
-	border-bottom-color: rgb(4, 35, 38);
-	border-right-color:  rgb(4, 35, 38);
-}
-
-
-QPushButton:pressed{
-	border-style: insetset;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #4195FF;
-	border-radius: 8px;
-	border-top-color: rgb(4, 35, 38);
-	border-left-color:  rgb(4, 35, 38);
-}</string>
-                   </property>
-                   <property name="inputMethodHints">
-                    <set>Qt::ImhNone</set>
-                   </property>
-                   <property name="text">
-                    <string>Consultar</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../src/collect_icon.svg</normaloff>../src/collect_icon.svg</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>45</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                  </widget>
-                  <widget class="QPushButton" name="btn_coletar_2">
-                   <property name="geometry">
-                    <rect>
-                     <x>120</x>
-                     <y>6</y>
-                     <width>100</width>
-                     <height>45</height>
-                    </rect>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>100</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="baseSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>MS Shell Dlg 2</family>
-                     <pointsize>11</pointsize>
-                     <weight>9</weight>
-                     <italic>false</italic>
-                     <bold>false</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-	border-style: none;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #4195FF;
-	border-radius: 12px;
-	border-bottom-color: rgb(4, 35, 38);
-	border-right-color:  rgb(4, 35, 38);
-}
-QPushButton:hover{
-	border-style: none;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #0954B2;
-	border-radius: 12px;
-	border-bottom-color: rgb(4, 35, 38);
-	border-right-color:  rgb(4, 35, 38);
-}
-
-
-QPushButton:pressed{
-	border-style: insetset;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #4195FF;
-	border-radius: 8px;
-	border-top-color: rgb(4, 35, 38);
-	border-left-color:  rgb(4, 35, 38);
-}</string>
-                   </property>
-                   <property name="inputMethodHints">
-                    <set>Qt::ImhNone</set>
-                   </property>
-                   <property name="text">
-                    <string>Adicionar</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../src/collect_icon.svg</normaloff>../src/collect_icon.svg</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>45</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                  </widget>
-                  <widget class="QPushButton" name="btn_coletar_3">
-                   <property name="geometry">
-                    <rect>
-                     <x>230</x>
-                     <y>6</y>
-                     <width>100</width>
-                     <height>45</height>
-                    </rect>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>100</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="baseSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>MS Shell Dlg 2</family>
-                     <pointsize>11</pointsize>
-                     <weight>9</weight>
-                     <italic>false</italic>
-                     <bold>false</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-	border-style: none;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #4195FF;
-	border-radius: 12px;
-	border-bottom-color: rgb(4, 35, 38);
-	border-right-color:  rgb(4, 35, 38);
-}
-QPushButton:hover{
-	border-style: none;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #0954B2;
-	border-radius: 12px;
-	border-bottom-color: rgb(4, 35, 38);
-	border-right-color:  rgb(4, 35, 38);
-}
-
-
-QPushButton:pressed{
-	border-style: insetset;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #4195FF;
-	border-radius: 8px;
-	border-top-color: rgb(4, 35, 38);
-	border-left-color:  rgb(4, 35, 38);
-}</string>
-                   </property>
-                   <property name="inputMethodHints">
-                    <set>Qt::ImhNone</set>
-                   </property>
-                   <property name="text">
-                    <string>Alterar</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../src/collect_icon.svg</normaloff>../src/collect_icon.svg</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>45</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                  </widget>
-                  <widget class="QPushButton" name="btn_coletar_4">
-                   <property name="geometry">
-                    <rect>
-                     <x>340</x>
-                     <y>6</y>
-                     <width>100</width>
-                     <height>45</height>
-                    </rect>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>100</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>100</width>
-                     <height>45</height>
-                    </size>
-                   </property>
-                   <property name="baseSize">
-                    <size>
-                     <width>0</width>
-                     <height>0</height>
-                    </size>
-                   </property>
-                   <property name="font">
-                    <font>
-                     <family>MS Shell Dlg 2</family>
-                     <pointsize>11</pointsize>
-                     <weight>9</weight>
-                     <italic>false</italic>
-                     <bold>false</bold>
-                    </font>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
-	border-style: none;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #4195FF;
-	border-radius: 12px;
-	border-bottom-color: rgb(4, 35, 38);
-	border-right-color:  rgb(4, 35, 38);
-}
-QPushButton:hover{
-	border-style: none;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #0954B2;
-	border-radius: 12px;
-	border-bottom-color: rgb(4, 35, 38);
-	border-right-color:  rgb(4, 35, 38);
-}
-
-
-QPushButton:pressed{
-	border-style: insetset;
-	border-width: 2px;
-	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
-	color: rgb(255, 255, 255);
-	background-color: #4195FF;
-	border-radius: 8px;
-	border-top-color: rgb(4, 35, 38);
-	border-left-color:  rgb(4, 35, 38);
-}</string>
-                   </property>
-                   <property name="inputMethodHints">
-                    <set>Qt::ImhNone</set>
-                   </property>
-                   <property name="text">
-                    <string>Excluir</string>
-                   </property>
-                   <property name="icon">
-                    <iconset>
-                     <normaloff>../src/collect_icon.svg</normaloff>../src/collect_icon.svg</iconset>
-                   </property>
-                   <property name="iconSize">
-                    <size>
-                     <width>45</width>
-                     <height>30</height>
-                    </size>
-                   </property>
-                  </widget>
-                 </widget>
-                </item>
-               </layout>
-              </widget>
-             </item>
-             <item>
               <widget class="QFrame" name="frame_page">
                <property name="frameShape">
                 <enum>QFrame::StyledPanel</enum>
@@ -1164,16 +677,507 @@ QPushButton:pressed{
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_6">
                 <item>
-                 <widget class="QTabWidget" name="tabWidget">
-                  <widget class="QWidget" name="tab">
-                   <attribute name="title">
-                    <string>Tab 1</string>
-                   </attribute>
+                 <widget class="QStackedWidget" name="pages">
+                  <widget class="QWidget" name="Page_chamados">
+                   <layout class="QGridLayout" name="gridLayout">
+                    <item row="0" column="0">
+                     <widget class="QComboBox" name="cbb_select_setor">
+                      <property name="minimumSize">
+                       <size>
+                        <width>0</width>
+                        <height>60</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>60</height>
+                       </size>
+                      </property>
+                      <property name="sizeIncrement">
+                       <size>
+                        <width>0</width>
+                        <height>0</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
+                      </property>
+                      <item>
+                       <property name="text">
+                        <string>Flow Docs</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Folha</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Gerente</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Recepção</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Service Desk</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>SIS - SIE - SAS</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>SSE - SED - PORTAL - PATRIMONIO</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>Tributário</string>
+                       </property>
+                      </item>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLineEdit" name="le_search_name">
+                      <property name="minimumSize">
+                       <size>
+                        <width>250</width>
+                        <height>60</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>16777215</width>
+                        <height>60</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
+                      </property>
+                      <property name="placeholderText">
+                       <string>Nome do funcionário</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="2">
+                     <widget class="QGroupBox" name="groupBox">
+                      <property name="minimumSize">
+                       <size>
+                        <width>450</width>
+                        <height>60</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>450</width>
+                        <height>60</height>
+                       </size>
+                      </property>
+                      <property name="title">
+                       <string/>
+                      </property>
+                      <widget class="QPushButton" name="btn_coletar_5">
+                       <property name="geometry">
+                        <rect>
+                         <x>10</x>
+                         <y>6</y>
+                         <width>100</width>
+                         <height>45</height>
+                        </rect>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>100</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="baseSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>MS Shell Dlg 2</family>
+                         <pointsize>11</pointsize>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{
+	border-style: none;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #4195FF;
+	border-radius: 12px;
+	border-bottom-color: rgb(4, 35, 38);
+	border-right-color:  rgb(4, 35, 38);
+}
+QPushButton:hover{
+	border-style: none;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #0954B2;
+	border-radius: 12px;
+	border-bottom-color: rgb(4, 35, 38);
+	border-right-color:  rgb(4, 35, 38);
+}
+
+
+QPushButton:pressed{
+	border-style: insetset;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #4195FF;
+	border-radius: 8px;
+	border-top-color: rgb(4, 35, 38);
+	border-left-color:  rgb(4, 35, 38);
+}</string>
+                       </property>
+                       <property name="inputMethodHints">
+                        <set>Qt::ImhNone</set>
+                       </property>
+                       <property name="text">
+                        <string>Consultar</string>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>../src/icon_add.svg</normaloff>../src/icon_add.svg</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="btn_coletar_2">
+                       <property name="geometry">
+                        <rect>
+                         <x>120</x>
+                         <y>6</y>
+                         <width>100</width>
+                         <height>45</height>
+                        </rect>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>100</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="baseSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>MS Shell Dlg 2</family>
+                         <pointsize>11</pointsize>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{
+	border-style: none;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #4195FF;
+	border-radius: 12px;
+	border-bottom-color: rgb(4, 35, 38);
+	border-right-color:  rgb(4, 35, 38);
+}
+QPushButton:hover{
+	border-style: none;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #0954B2;
+	border-radius: 12px;
+	border-bottom-color: rgb(4, 35, 38);
+	border-right-color:  rgb(4, 35, 38);
+}
+
+
+QPushButton:pressed{
+	border-style: insetset;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #4195FF;
+	border-radius: 8px;
+	border-top-color: rgb(4, 35, 38);
+	border-left-color:  rgb(4, 35, 38);
+}</string>
+                       </property>
+                       <property name="inputMethodHints">
+                        <set>Qt::ImhNone</set>
+                       </property>
+                       <property name="text">
+                        <string>Adicionar</string>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>../src/icon_add.svg</normaloff>../src/icon_add.svg</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="btn_coletar_3">
+                       <property name="geometry">
+                        <rect>
+                         <x>230</x>
+                         <y>6</y>
+                         <width>100</width>
+                         <height>45</height>
+                        </rect>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>100</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="baseSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>MS Shell Dlg 2</family>
+                         <pointsize>11</pointsize>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{
+	border-style: none;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #4195FF;
+	border-radius: 12px;
+	border-bottom-color: rgb(4, 35, 38);
+	border-right-color:  rgb(4, 35, 38);
+}
+QPushButton:hover{
+	border-style: none;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #0954B2;
+	border-radius: 12px;
+	border-bottom-color: rgb(4, 35, 38);
+	border-right-color:  rgb(4, 35, 38);
+}
+
+
+QPushButton:pressed{
+	border-style: insetset;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #4195FF;
+	border-radius: 8px;
+	border-top-color: rgb(4, 35, 38);
+	border-left-color:  rgb(4, 35, 38);
+}</string>
+                       </property>
+                       <property name="inputMethodHints">
+                        <set>Qt::ImhNone</set>
+                       </property>
+                       <property name="text">
+                        <string>Alterar</string>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>../src/icon_edit.svg</normaloff>../src/icon_edit.svg</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                      <widget class="QPushButton" name="btn_coletar_4">
+                       <property name="geometry">
+                        <rect>
+                         <x>340</x>
+                         <y>6</y>
+                         <width>100</width>
+                         <height>45</height>
+                        </rect>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>100</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>100</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="baseSize">
+                        <size>
+                         <width>0</width>
+                         <height>0</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>MS Shell Dlg 2</family>
+                         <pointsize>11</pointsize>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton{
+	border-style: none;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #4195FF;
+	border-radius: 12px;
+	border-bottom-color: rgb(4, 35, 38);
+	border-right-color:  rgb(4, 35, 38);
+}
+QPushButton:hover{
+	border-style: none;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #0954B2;
+	border-radius: 12px;
+	border-bottom-color: rgb(4, 35, 38);
+	border-right-color:  rgb(4, 35, 38);
+}
+
+
+QPushButton:pressed{
+	border-style: insetset;
+	border-width: 2px;
+	font: 75 11pt &quot;MS Shell Dlg 2&quot;;
+	color: rgb(255, 255, 255);
+	background-color: #4195FF;
+	border-radius: 8px;
+	border-top-color: rgb(4, 35, 38);
+	border-left-color:  rgb(4, 35, 38);
+}</string>
+                       </property>
+                       <property name="inputMethodHints">
+                        <set>Qt::ImhNone</set>
+                       </property>
+                       <property name="text">
+                        <string>Excluir</string>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>../src/icon_remove.svg</normaloff>../src/icon_remove.svg</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </widget>
+                    </item>
+                    <item row="1" column="0" colspan="2">
+                     <widget class="QTableWidget" name="tableWidget">
+                      <column>
+                       <property name="text">
+                        <string>FUNCIONARIO</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>RAMAL INTERNO</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>RAMAL EXTERNO</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string>CELULAR</string>
+                       </property>
+                      </column>
+                      <column>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </column>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
-                  <widget class="QWidget" name="tab_2">
-                   <attribute name="title">
-                    <string>Tab 2</string>
-                   </attribute>
+                  <widget class="QWidget" name="page_ramal">
+                   <widget class="QLabel" name="label_2">
+                    <property name="geometry">
+                     <rect>
+                      <x>180</x>
+                      <y>100</y>
+                      <width>561</width>
+                      <height>191</height>
+                     </rect>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">font: 700 28pt &quot;Segoe UI&quot;;</string>
+                    </property>
+                    <property name="text">
+                     <string>Pagina Ramal</string>
+                    </property>
+                   </widget>
                   </widget>
                  </widget>
                 </item>
