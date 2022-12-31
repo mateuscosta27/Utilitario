@@ -15,11 +15,11 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QFont, QFontDatabase, QGradient, QIcon,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
-from PySide6.QtWidgets import (QApplication, QComboBox, QFrame, QGridLayout,
-    QGroupBox, QHBoxLayout, QHeaderView, QLabel,
-    QLineEdit, QMainWindow, QPushButton, QSizePolicy,
-    QSpacerItem, QStackedWidget, QTableWidget, QTableWidgetItem,
-    QVBoxLayout, QWidget)
+from PySide6.QtWidgets import (QAbstractItemView, QApplication, QComboBox, QFrame,
+    QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
+    QLabel, QLineEdit, QMainWindow, QPushButton,
+    QSizePolicy, QSpacerItem, QStackedWidget, QTableWidget,
+    QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_Main(object):
     def setupUi(self, Main):
@@ -111,7 +111,50 @@ class Ui_Main(object):
         self.horizontalLayout_7 = QHBoxLayout(self.frame_info)
         self.horizontalLayout_7.setSpacing(0)
         self.horizontalLayout_7.setObjectName(u"horizontalLayout_7")
-        self.horizontalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout_7.setContentsMargins(0, 0, 10, 0)
+        self.horizontalSpacer = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.horizontalLayout_7.addItem(self.horizontalSpacer)
+
+        self.btn_db = QPushButton(self.frame_info)
+        self.btn_db.setObjectName(u"btn_db")
+        self.btn_db.setMinimumSize(QSize(100, 45))
+        self.btn_db.setMaximumSize(QSize(100, 45))
+        self.btn_db.setStyleSheet(u"QPushButton{\n"
+"	border-style: none;\n"
+"	border-width: 2px;\n"
+"	font: 75 11pt \"MS Shell Dlg 2\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: #4195FF;\n"
+"	border-radius: 12px;\n"
+"	border-bottom-color: rgb(4, 35, 38);\n"
+"	border-right-color:  rgb(4, 35, 38);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	border-style: none;\n"
+"	border-width: 2px;\n"
+"	font: 75 11pt \"MS Shell Dlg 2\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: #0954B2;\n"
+"	border-radius: 12px;\n"
+"	border-bottom-color: rgb(4, 35, 38);\n"
+"	border-right-color:  rgb(4, 35, 38);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border-style: insetset;\n"
+"	border-width: 2px;\n"
+"	font: 75 11pt \"MS Shell Dlg 2\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: #4195FF;\n"
+"	border-radius: 8px;\n"
+"	border-top-color: rgb(4, 35, 38);\n"
+"	border-left-color:  rgb(4, 35, 38);\n"
+"}")
+
+        self.horizontalLayout_7.addWidget(self.btn_db, 0, Qt.AlignRight|Qt.AlignVCenter)
+
 
         self.horizontalLayout_2.addWidget(self.frame_info)
 
@@ -338,14 +381,29 @@ class Ui_Main(object):
         self.frame_page.setFrameShape(QFrame.StyledPanel)
         self.frame_page.setFrameShadow(QFrame.Raised)
         self.verticalLayout_6 = QVBoxLayout(self.frame_page)
+        self.verticalLayout_6.setSpacing(0)
         self.verticalLayout_6.setObjectName(u"verticalLayout_6")
+        self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.pages = QStackedWidget(self.frame_page)
         self.pages.setObjectName(u"pages")
-        self.Page_chamados = QWidget()
-        self.Page_chamados.setObjectName(u"Page_chamados")
-        self.gridLayout = QGridLayout(self.Page_chamados)
+        self.page_ramal = QWidget()
+        self.page_ramal.setObjectName(u"page_ramal")
+        self.verticalLayout_7 = QVBoxLayout(self.page_ramal)
+        self.verticalLayout_7.setSpacing(0)
+        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
+        self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
+        self.fram_footer_pages = QFrame(self.page_ramal)
+        self.fram_footer_pages.setObjectName(u"fram_footer_pages")
+        self.fram_footer_pages.setMinimumSize(QSize(0, 100))
+        self.fram_footer_pages.setMaximumSize(QSize(16777215, 100))
+        self.fram_footer_pages.setFrameShape(QFrame.StyledPanel)
+        self.fram_footer_pages.setFrameShadow(QFrame.Raised)
+        self.gridLayout = QGridLayout(self.fram_footer_pages)
         self.gridLayout.setObjectName(u"gridLayout")
-        self.cbb_select_setor = QComboBox(self.Page_chamados)
+        self.gridLayout.setHorizontalSpacing(10)
+        self.gridLayout.setVerticalSpacing(0)
+        self.gridLayout.setContentsMargins(5, 0, 5, 0)
+        self.cbb_select_setor = QComboBox(self.fram_footer_pages)
         self.cbb_select_setor.addItem("")
         self.cbb_select_setor.addItem("")
         self.cbb_select_setor.addItem("")
@@ -362,7 +420,7 @@ class Ui_Main(object):
 
         self.gridLayout.addWidget(self.cbb_select_setor, 0, 0, 1, 1)
 
-        self.le_search_name = QLineEdit(self.Page_chamados)
+        self.le_search_name = QLineEdit(self.fram_footer_pages)
         self.le_search_name.setObjectName(u"le_search_name")
         self.le_search_name.setMinimumSize(QSize(250, 60))
         self.le_search_name.setMaximumSize(QSize(16777215, 60))
@@ -370,18 +428,21 @@ class Ui_Main(object):
 
         self.gridLayout.addWidget(self.le_search_name, 0, 1, 1, 1)
 
-        self.groupBox = QGroupBox(self.Page_chamados)
+        self.groupBox = QGroupBox(self.fram_footer_pages)
         self.groupBox.setObjectName(u"groupBox")
         self.groupBox.setMinimumSize(QSize(450, 60))
         self.groupBox.setMaximumSize(QSize(450, 60))
-        self.btn_coletar_5 = QPushButton(self.groupBox)
-        self.btn_coletar_5.setObjectName(u"btn_coletar_5")
-        self.btn_coletar_5.setGeometry(QRect(10, 6, 100, 45))
-        self.btn_coletar_5.setMinimumSize(QSize(100, 45))
-        self.btn_coletar_5.setMaximumSize(QSize(100, 45))
-        self.btn_coletar_5.setBaseSize(QSize(0, 0))
-        self.btn_coletar_5.setFont(font)
-        self.btn_coletar_5.setStyleSheet(u"QPushButton{\n"
+        self.gridLayout_2 = QGridLayout(self.groupBox)
+        self.gridLayout_2.setSpacing(0)
+        self.gridLayout_2.setObjectName(u"gridLayout_2")
+        self.gridLayout_2.setContentsMargins(0, 0, 0, 0)
+        self.btn_search = QPushButton(self.groupBox)
+        self.btn_search.setObjectName(u"btn_search")
+        self.btn_search.setMinimumSize(QSize(100, 45))
+        self.btn_search.setMaximumSize(QSize(100, 45))
+        self.btn_search.setBaseSize(QSize(0, 0))
+        self.btn_search.setFont(font)
+        self.btn_search.setStyleSheet(u"QPushButton{\n"
 "	border-style: none;\n"
 "	border-width: 2px;\n"
 "	font: 75 11pt \"MS Shell Dlg 2\";\n"
@@ -413,19 +474,21 @@ class Ui_Main(object):
 "	border-top-color: rgb(4, 35, 38);\n"
 "	border-left-color:  rgb(4, 35, 38);\n"
 "}")
-        self.btn_coletar_5.setInputMethodHints(Qt.ImhNone)
+        self.btn_search.setInputMethodHints(Qt.ImhNone)
         icon3 = QIcon()
-        icon3.addFile(u"../src/icon_add.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_coletar_5.setIcon(icon3)
-        self.btn_coletar_5.setIconSize(QSize(20, 20))
-        self.btn_coletar_2 = QPushButton(self.groupBox)
-        self.btn_coletar_2.setObjectName(u"btn_coletar_2")
-        self.btn_coletar_2.setGeometry(QRect(120, 6, 100, 45))
-        self.btn_coletar_2.setMinimumSize(QSize(100, 45))
-        self.btn_coletar_2.setMaximumSize(QSize(100, 45))
-        self.btn_coletar_2.setBaseSize(QSize(0, 0))
-        self.btn_coletar_2.setFont(font)
-        self.btn_coletar_2.setStyleSheet(u"QPushButton{\n"
+        icon3.addFile(u"../src/icon_search.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_search.setIcon(icon3)
+        self.btn_search.setIconSize(QSize(20, 20))
+
+        self.gridLayout_2.addWidget(self.btn_search, 0, 0, 1, 1)
+
+        self.btn_add = QPushButton(self.groupBox)
+        self.btn_add.setObjectName(u"btn_add")
+        self.btn_add.setMinimumSize(QSize(100, 45))
+        self.btn_add.setMaximumSize(QSize(100, 45))
+        self.btn_add.setBaseSize(QSize(0, 0))
+        self.btn_add.setFont(font)
+        self.btn_add.setStyleSheet(u"QPushButton{\n"
 "	border-style: none;\n"
 "	border-width: 2px;\n"
 "	font: 75 11pt \"MS Shell Dlg 2\";\n"
@@ -457,61 +520,21 @@ class Ui_Main(object):
 "	border-top-color: rgb(4, 35, 38);\n"
 "	border-left-color:  rgb(4, 35, 38);\n"
 "}")
-        self.btn_coletar_2.setInputMethodHints(Qt.ImhNone)
-        self.btn_coletar_2.setIcon(icon3)
-        self.btn_coletar_2.setIconSize(QSize(20, 20))
-        self.btn_coletar_3 = QPushButton(self.groupBox)
-        self.btn_coletar_3.setObjectName(u"btn_coletar_3")
-        self.btn_coletar_3.setGeometry(QRect(230, 6, 100, 45))
-        self.btn_coletar_3.setMinimumSize(QSize(100, 45))
-        self.btn_coletar_3.setMaximumSize(QSize(100, 45))
-        self.btn_coletar_3.setBaseSize(QSize(0, 0))
-        self.btn_coletar_3.setFont(font)
-        self.btn_coletar_3.setStyleSheet(u"QPushButton{\n"
-"	border-style: none;\n"
-"	border-width: 2px;\n"
-"	font: 75 11pt \"MS Shell Dlg 2\";\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: #4195FF;\n"
-"	border-radius: 12px;\n"
-"	border-bottom-color: rgb(4, 35, 38);\n"
-"	border-right-color:  rgb(4, 35, 38);\n"
-"}\n"
-"QPushButton:hover{\n"
-"	border-style: none;\n"
-"	border-width: 2px;\n"
-"	font: 75 11pt \"MS Shell Dlg 2\";\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: #0954B2;\n"
-"	border-radius: 12px;\n"
-"	border-bottom-color: rgb(4, 35, 38);\n"
-"	border-right-color:  rgb(4, 35, 38);\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border-style: insetset;\n"
-"	border-width: 2px;\n"
-"	font: 75 11pt \"MS Shell Dlg 2\";\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: #4195FF;\n"
-"	border-radius: 8px;\n"
-"	border-top-color: rgb(4, 35, 38);\n"
-"	border-left-color:  rgb(4, 35, 38);\n"
-"}")
-        self.btn_coletar_3.setInputMethodHints(Qt.ImhNone)
+        self.btn_add.setInputMethodHints(Qt.ImhNone)
         icon4 = QIcon()
-        icon4.addFile(u"../src/icon_edit.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_coletar_3.setIcon(icon4)
-        self.btn_coletar_3.setIconSize(QSize(20, 20))
-        self.btn_coletar_4 = QPushButton(self.groupBox)
-        self.btn_coletar_4.setObjectName(u"btn_coletar_4")
-        self.btn_coletar_4.setGeometry(QRect(340, 6, 100, 45))
-        self.btn_coletar_4.setMinimumSize(QSize(100, 45))
-        self.btn_coletar_4.setMaximumSize(QSize(100, 45))
-        self.btn_coletar_4.setBaseSize(QSize(0, 0))
-        self.btn_coletar_4.setFont(font)
-        self.btn_coletar_4.setStyleSheet(u"QPushButton{\n"
+        icon4.addFile(u"../src/icon_add.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_add.setIcon(icon4)
+        self.btn_add.setIconSize(QSize(20, 20))
+
+        self.gridLayout_2.addWidget(self.btn_add, 0, 1, 1, 1)
+
+        self.btn_alter = QPushButton(self.groupBox)
+        self.btn_alter.setObjectName(u"btn_alter")
+        self.btn_alter.setMinimumSize(QSize(100, 45))
+        self.btn_alter.setMaximumSize(QSize(100, 45))
+        self.btn_alter.setBaseSize(QSize(0, 0))
+        self.btn_alter.setFont(font)
+        self.btn_alter.setStyleSheet(u"QPushButton{\n"
 "	border-style: none;\n"
 "	border-width: 2px;\n"
 "	font: 75 11pt \"MS Shell Dlg 2\";\n"
@@ -543,39 +566,122 @@ class Ui_Main(object):
 "	border-top-color: rgb(4, 35, 38);\n"
 "	border-left-color:  rgb(4, 35, 38);\n"
 "}")
-        self.btn_coletar_4.setInputMethodHints(Qt.ImhNone)
+        self.btn_alter.setInputMethodHints(Qt.ImhNone)
         icon5 = QIcon()
-        icon5.addFile(u"../src/icon_remove.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_coletar_4.setIcon(icon5)
-        self.btn_coletar_4.setIconSize(QSize(20, 20))
+        icon5.addFile(u"../src/icon_edit.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_alter.setIcon(icon5)
+        self.btn_alter.setIconSize(QSize(20, 20))
+
+        self.gridLayout_2.addWidget(self.btn_alter, 0, 2, 1, 1)
+
+        self.btn_delete = QPushButton(self.groupBox)
+        self.btn_delete.setObjectName(u"btn_delete")
+        self.btn_delete.setMinimumSize(QSize(100, 45))
+        self.btn_delete.setMaximumSize(QSize(100, 45))
+        self.btn_delete.setBaseSize(QSize(0, 0))
+        self.btn_delete.setFont(font)
+        self.btn_delete.setStyleSheet(u"QPushButton{\n"
+"	border-style: none;\n"
+"	border-width: 2px;\n"
+"	font: 75 11pt \"MS Shell Dlg 2\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: #4195FF;\n"
+"	border-radius: 12px;\n"
+"	border-bottom-color: rgb(4, 35, 38);\n"
+"	border-right-color:  rgb(4, 35, 38);\n"
+"}\n"
+"QPushButton:hover{\n"
+"	border-style: none;\n"
+"	border-width: 2px;\n"
+"	font: 75 11pt \"MS Shell Dlg 2\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: #0954B2;\n"
+"	border-radius: 12px;\n"
+"	border-bottom-color: rgb(4, 35, 38);\n"
+"	border-right-color:  rgb(4, 35, 38);\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton:pressed{\n"
+"	border-style: insetset;\n"
+"	border-width: 2px;\n"
+"	font: 75 11pt \"MS Shell Dlg 2\";\n"
+"	color: rgb(255, 255, 255);\n"
+"	background-color: #4195FF;\n"
+"	border-radius: 8px;\n"
+"	border-top-color: rgb(4, 35, 38);\n"
+"	border-left-color:  rgb(4, 35, 38);\n"
+"}")
+        self.btn_delete.setInputMethodHints(Qt.ImhNone)
+        icon6 = QIcon()
+        icon6.addFile(u"../src/icon_remove.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.btn_delete.setIcon(icon6)
+        self.btn_delete.setIconSize(QSize(20, 20))
+
+        self.gridLayout_2.addWidget(self.btn_delete, 0, 3, 1, 1)
+
 
         self.gridLayout.addWidget(self.groupBox, 0, 2, 1, 1)
 
-        self.tableWidget = QTableWidget(self.Page_chamados)
-        if (self.tableWidget.columnCount() < 5):
-            self.tableWidget.setColumnCount(5)
+
+        self.verticalLayout_7.addWidget(self.fram_footer_pages)
+
+        self.fram_table = QFrame(self.page_ramal)
+        self.fram_table.setObjectName(u"fram_table")
+        self.fram_table.setContextMenuPolicy(Qt.NoContextMenu)
+        self.fram_table.setFrameShape(QFrame.StyledPanel)
+        self.fram_table.setFrameShadow(QFrame.Raised)
+        self.horizontalLayout_3 = QHBoxLayout(self.fram_table)
+        self.horizontalLayout_3.setSpacing(0)
+        self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
+        self.horizontalLayout_3.setContentsMargins(55, 0, 55, 0)
+        self.tb_ramal = QTableWidget(self.fram_table)
+        if (self.tb_ramal.columnCount() < 6):
+            self.tb_ramal.setColumnCount(6)
         __qtablewidgetitem = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        self.tb_ramal.setHorizontalHeaderItem(0, __qtablewidgetitem)
         __qtablewidgetitem1 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        self.tb_ramal.setHorizontalHeaderItem(1, __qtablewidgetitem1)
         __qtablewidgetitem2 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        self.tb_ramal.setHorizontalHeaderItem(2, __qtablewidgetitem2)
         __qtablewidgetitem3 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        self.tb_ramal.setHorizontalHeaderItem(3, __qtablewidgetitem3)
         __qtablewidgetitem4 = QTableWidgetItem()
-        self.tableWidget.setHorizontalHeaderItem(4, __qtablewidgetitem4)
-        self.tableWidget.setObjectName(u"tableWidget")
+        self.tb_ramal.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        self.tb_ramal.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        self.tb_ramal.setObjectName(u"tb_ramal")
+        font1 = QFont()
+        font1.setPointSize(12)
+        font1.setBold(True)
+        self.tb_ramal.setFont(font1)
+        self.tb_ramal.setFrameShape(QFrame.Box)
+        self.tb_ramal.setFrameShadow(QFrame.Sunken)
+        self.tb_ramal.setAutoScrollMargin(20)
+        self.tb_ramal.setEditTriggers(QAbstractItemView.AnyKeyPressed|QAbstractItemView.DoubleClicked)
+        self.tb_ramal.setTextElideMode(Qt.ElideMiddle)
+        self.tb_ramal.setVerticalScrollMode(QAbstractItemView.ScrollPerItem)
+        self.tb_ramal.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
+        self.tb_ramal.setShowGrid(True)
+        self.tb_ramal.setSortingEnabled(True)
+        self.tb_ramal.setCornerButtonEnabled(True)
+        self.tb_ramal.horizontalHeader().setMinimumSectionSize(50)
+        self.tb_ramal.horizontalHeader().setDefaultSectionSize(250)
+        self.tb_ramal.verticalHeader().setVisible(False)
 
-        self.gridLayout.addWidget(self.tableWidget, 1, 0, 1, 2)
+        self.horizontalLayout_3.addWidget(self.tb_ramal)
 
-        self.pages.addWidget(self.Page_chamados)
-        self.page_ramal = QWidget()
-        self.page_ramal.setObjectName(u"page_ramal")
-        self.label_2 = QLabel(self.page_ramal)
+
+        self.verticalLayout_7.addWidget(self.fram_table)
+
+        self.pages.addWidget(self.page_ramal)
+        self.page_chamados = QWidget()
+        self.page_chamados.setObjectName(u"page_chamados")
+        self.label_2 = QLabel(self.page_chamados)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setGeometry(QRect(180, 100, 561, 191))
         self.label_2.setStyleSheet(u"font: 700 28pt \"Segoe UI\";")
-        self.pages.addWidget(self.page_ramal)
+        self.pages.addWidget(self.page_chamados)
 
         self.verticalLayout_6.addWidget(self.pages)
 
@@ -621,6 +727,7 @@ class Ui_Main(object):
         self.retranslateUi(Main)
 
         self.btn_about.setDefault(False)
+        self.pages.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(Main)
@@ -632,6 +739,7 @@ class Ui_Main(object):
 #if QT_CONFIG(shortcut)
         self.btn_menu.setShortcut("")
 #endif // QT_CONFIG(shortcut)
+        self.btn_db.setText(QCoreApplication.translate("Main", u"Conex\u00e3o", None))
         self.btn_ramais.setText(QCoreApplication.translate("Main", u"Ramais", None))
         self.btn_chamados.setText(QCoreApplication.translate("Main", u"Chamados", None))
         self.btn_about.setText(QCoreApplication.translate("Main", u"Sobre", None))
@@ -646,18 +754,22 @@ class Ui_Main(object):
 
         self.le_search_name.setPlaceholderText(QCoreApplication.translate("Main", u"Nome do funcion\u00e1rio", None))
         self.groupBox.setTitle("")
-        self.btn_coletar_5.setText(QCoreApplication.translate("Main", u"Consultar", None))
-        self.btn_coletar_2.setText(QCoreApplication.translate("Main", u"Adicionar", None))
-        self.btn_coletar_3.setText(QCoreApplication.translate("Main", u"Alterar", None))
-        self.btn_coletar_4.setText(QCoreApplication.translate("Main", u"Excluir", None))
-        ___qtablewidgetitem = self.tableWidget.horizontalHeaderItem(0)
-        ___qtablewidgetitem.setText(QCoreApplication.translate("Main", u"FUNCIONARIO", None));
-        ___qtablewidgetitem1 = self.tableWidget.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Main", u"RAMAL INTERNO", None));
-        ___qtablewidgetitem2 = self.tableWidget.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Main", u"RAMAL EXTERNO", None));
-        ___qtablewidgetitem3 = self.tableWidget.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("Main", u"CELULAR", None));
+        self.btn_search.setText(QCoreApplication.translate("Main", u"Pesquisar", None))
+        self.btn_add.setText(QCoreApplication.translate("Main", u"Adicionar", None))
+        self.btn_alter.setText(QCoreApplication.translate("Main", u"Alterar", None))
+        self.btn_delete.setText(QCoreApplication.translate("Main", u"Excluir", None))
+        ___qtablewidgetitem = self.tb_ramal.horizontalHeaderItem(0)
+        ___qtablewidgetitem.setText(QCoreApplication.translate("Main", u"Nome", None));
+        ___qtablewidgetitem1 = self.tb_ramal.horizontalHeaderItem(1)
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Main", u"Ramal Interno", None));
+        ___qtablewidgetitem2 = self.tb_ramal.horizontalHeaderItem(2)
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("Main", u"Ramal Externo", None));
+        ___qtablewidgetitem3 = self.tb_ramal.horizontalHeaderItem(3)
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("Main", u"Celular", None));
+        ___qtablewidgetitem4 = self.tb_ramal.horizontalHeaderItem(4)
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("Main", u"Status", None));
+        ___qtablewidgetitem5 = self.tb_ramal.horizontalHeaderItem(5)
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("Main", u"A\u00e7\u00e3o", None));
         self.label_2.setText(QCoreApplication.translate("Main", u"Pagina Ramal", None))
         self.lb_commom.setText(QCoreApplication.translate("Main", u"Utilitario de servi\u00e7os - vers\u00e3o 0.0.1", None))
     # retranslateUi
