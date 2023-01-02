@@ -18,8 +18,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QAbstractItemView, QApplication, QComboBox, QFrame,
     QGridLayout, QGroupBox, QHBoxLayout, QHeaderView,
     QLabel, QLineEdit, QMainWindow, QPushButton,
-    QSizePolicy, QSpacerItem, QStackedWidget, QTableWidget,
-    QTableWidgetItem, QVBoxLayout, QWidget)
+    QRadioButton, QSizePolicy, QSpacerItem, QStackedWidget,
+    QTableWidget, QTableWidgetItem, QVBoxLayout, QWidget)
 
 class Ui_Main(object):
     def setupUi(self, Main):
@@ -93,7 +93,7 @@ class Ui_Main(object):
 "	border-left-color:  rgb(4, 35, 38);\n"
 "}")
         icon = QIcon()
-        icon.addFile(u"../src/icon_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon.addFile(u"./src/icon_menu.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_menu.setIcon(icon)
         self.btn_menu.setIconSize(QSize(50, 50))
 
@@ -244,7 +244,7 @@ class Ui_Main(object):
 "}")
         self.btn_ramais.setInputMethodHints(Qt.ImhNone)
         icon1 = QIcon()
-        icon1.addFile(u"../src/icon_ramal.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon1.addFile(u"./src/icon_ramal.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_ramais.setIcon(icon1)
         self.btn_ramais.setIconSize(QSize(35, 35))
 
@@ -287,7 +287,7 @@ class Ui_Main(object):
 "	border-left-color:  rgb(4, 35, 38);\n"
 "}")
         icon2 = QIcon()
-        icon2.addFile(u"../src/icon_call.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon2.addFile(u"./src/icon_call.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_chamados.setIcon(icon2)
         self.btn_chamados.setIconSize(QSize(35, 35))
 
@@ -394,8 +394,9 @@ class Ui_Main(object):
         self.verticalLayout_7.setContentsMargins(0, 0, 0, 0)
         self.fram_footer_pages = QFrame(self.page_ramal)
         self.fram_footer_pages.setObjectName(u"fram_footer_pages")
-        self.fram_footer_pages.setMinimumSize(QSize(0, 100))
-        self.fram_footer_pages.setMaximumSize(QSize(16777215, 100))
+        self.fram_footer_pages.setMinimumSize(QSize(0, 150))
+        self.fram_footer_pages.setMaximumSize(QSize(16777215, 150))
+        self.fram_footer_pages.setStyleSheet(u"")
         self.fram_footer_pages.setFrameShape(QFrame.StyledPanel)
         self.fram_footer_pages.setFrameShadow(QFrame.Raised)
         self.gridLayout = QGridLayout(self.fram_footer_pages)
@@ -403,7 +404,17 @@ class Ui_Main(object):
         self.gridLayout.setHorizontalSpacing(10)
         self.gridLayout.setVerticalSpacing(0)
         self.gridLayout.setContentsMargins(5, 0, 5, 0)
+        self.le_search_name = QLineEdit(self.fram_footer_pages)
+        self.le_search_name.setObjectName(u"le_search_name")
+        self.le_search_name.setMinimumSize(QSize(250, 60))
+        self.le_search_name.setMaximumSize(QSize(16777215, 60))
+        self.le_search_name.setStyleSheet(u"font: 75 16pt \"MS Shell Dlg 2\";\n"
+"background-color: rgb(255, 255, 255);")
+
+        self.gridLayout.addWidget(self.le_search_name, 0, 1, 1, 1)
+
         self.cbb_select_setor = QComboBox(self.fram_footer_pages)
+        self.cbb_select_setor.addItem("")
         self.cbb_select_setor.addItem("")
         self.cbb_select_setor.addItem("")
         self.cbb_select_setor.addItem("")
@@ -416,17 +427,16 @@ class Ui_Main(object):
         self.cbb_select_setor.setMinimumSize(QSize(0, 60))
         self.cbb_select_setor.setMaximumSize(QSize(16777215, 60))
         self.cbb_select_setor.setSizeIncrement(QSize(0, 0))
-        self.cbb_select_setor.setStyleSheet(u"font: 75 16pt \"MS Shell Dlg 2\";")
+        self.cbb_select_setor.setAutoFillBackground(False)
+        self.cbb_select_setor.setStyleSheet(u"font: 75 16pt \"MS Shell Dlg 2\";\n"
+"background-color: rgb(255, 255, 255);\n"
+"\n"
+"\n"
+"")
+        self.cbb_select_setor.setDuplicatesEnabled(False)
+        self.cbb_select_setor.setModelColumn(0)
 
         self.gridLayout.addWidget(self.cbb_select_setor, 0, 0, 1, 1)
-
-        self.le_search_name = QLineEdit(self.fram_footer_pages)
-        self.le_search_name.setObjectName(u"le_search_name")
-        self.le_search_name.setMinimumSize(QSize(250, 60))
-        self.le_search_name.setMaximumSize(QSize(16777215, 60))
-        self.le_search_name.setStyleSheet(u"font: 75 16pt \"MS Shell Dlg 2\";")
-
-        self.gridLayout.addWidget(self.le_search_name, 0, 1, 1, 1)
 
         self.groupBox = QGroupBox(self.fram_footer_pages)
         self.groupBox.setObjectName(u"groupBox")
@@ -476,7 +486,7 @@ class Ui_Main(object):
 "}")
         self.btn_search.setInputMethodHints(Qt.ImhNone)
         icon3 = QIcon()
-        icon3.addFile(u"../src/icon_search.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon3.addFile(u"./src/icon_search.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_search.setIcon(icon3)
         self.btn_search.setIconSize(QSize(20, 20))
 
@@ -522,7 +532,7 @@ class Ui_Main(object):
 "}")
         self.btn_add.setInputMethodHints(Qt.ImhNone)
         icon4 = QIcon()
-        icon4.addFile(u"../src/icon_add.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon4.addFile(u"./src/icon_add.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_add.setIcon(icon4)
         self.btn_add.setIconSize(QSize(20, 20))
 
@@ -568,7 +578,7 @@ class Ui_Main(object):
 "}")
         self.btn_alter.setInputMethodHints(Qt.ImhNone)
         icon5 = QIcon()
-        icon5.addFile(u"../src/icon_edit.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon5.addFile(u"./src/icon_edit.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_alter.setIcon(icon5)
         self.btn_alter.setIconSize(QSize(20, 20))
 
@@ -614,7 +624,7 @@ class Ui_Main(object):
 "}")
         self.btn_delete.setInputMethodHints(Qt.ImhNone)
         icon6 = QIcon()
-        icon6.addFile(u"../src/icon_remove.svg", QSize(), QIcon.Normal, QIcon.Off)
+        icon6.addFile(u"./src/icon_remove.svg", QSize(), QIcon.Normal, QIcon.Off)
         self.btn_delete.setIcon(icon6)
         self.btn_delete.setIconSize(QSize(20, 20))
 
@@ -623,51 +633,126 @@ class Ui_Main(object):
 
         self.gridLayout.addWidget(self.groupBox, 0, 2, 1, 1)
 
+        self.groupBox_2 = QGroupBox(self.fram_footer_pages)
+        self.groupBox_2.setObjectName(u"groupBox_2")
+        self.groupBox_2.setMinimumSize(QSize(450, 60))
+        self.groupBox_2.setMaximumSize(QSize(450, 60))
+        self.gridLayout_3 = QGridLayout(self.groupBox_2)
+        self.gridLayout_3.setObjectName(u"gridLayout_3")
+        self.horizontalSpacer_2 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer_2, 0, 0, 1, 1)
+
+        self.rb_ausente = QRadioButton(self.groupBox_2)
+        self.rb_ausente.setObjectName(u"rb_ausente")
+        self.rb_ausente.setMinimumSize(QSize(100, 20))
+        self.rb_ausente.setMaximumSize(QSize(100, 20))
+
+        self.gridLayout_3.addWidget(self.rb_ausente, 0, 3, 1, 1)
+
+        self.rb_livre = QRadioButton(self.groupBox_2)
+        self.rb_livre.setObjectName(u"rb_livre")
+        self.rb_livre.setMinimumSize(QSize(100, 20))
+        self.rb_livre.setMaximumSize(QSize(100, 20))
+
+        self.gridLayout_3.addWidget(self.rb_livre, 0, 1, 1, 1)
+
+        self.rb_atendimento = QRadioButton(self.groupBox_2)
+        self.rb_atendimento.setObjectName(u"rb_atendimento")
+        self.rb_atendimento.setMinimumSize(QSize(140, 20))
+        self.rb_atendimento.setMaximumSize(QSize(140, 20))
+
+        self.gridLayout_3.addWidget(self.rb_atendimento, 0, 2, 1, 1)
+
+        self.horizontalSpacer_3 = QSpacerItem(40, 20, QSizePolicy.Expanding, QSizePolicy.Minimum)
+
+        self.gridLayout_3.addItem(self.horizontalSpacer_3, 0, 4, 1, 1)
+
+
+        self.gridLayout.addWidget(self.groupBox_2, 1, 2, 1, 1)
+
 
         self.verticalLayout_7.addWidget(self.fram_footer_pages)
 
         self.fram_table = QFrame(self.page_ramal)
         self.fram_table.setObjectName(u"fram_table")
         self.fram_table.setContextMenuPolicy(Qt.NoContextMenu)
+        self.fram_table.setStyleSheet(u"")
         self.fram_table.setFrameShape(QFrame.StyledPanel)
         self.fram_table.setFrameShadow(QFrame.Raised)
         self.horizontalLayout_3 = QHBoxLayout(self.fram_table)
         self.horizontalLayout_3.setSpacing(0)
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
-        self.horizontalLayout_3.setContentsMargins(55, 0, 55, 0)
+        self.horizontalLayout_3.setContentsMargins(55, 0, 55, 15)
         self.tb_ramal = QTableWidget(self.fram_table)
-        if (self.tb_ramal.columnCount() < 6):
-            self.tb_ramal.setColumnCount(6)
-        __qtablewidgetitem = QTableWidgetItem()
-        self.tb_ramal.setHorizontalHeaderItem(0, __qtablewidgetitem)
-        __qtablewidgetitem1 = QTableWidgetItem()
-        self.tb_ramal.setHorizontalHeaderItem(1, __qtablewidgetitem1)
-        __qtablewidgetitem2 = QTableWidgetItem()
-        self.tb_ramal.setHorizontalHeaderItem(2, __qtablewidgetitem2)
-        __qtablewidgetitem3 = QTableWidgetItem()
-        self.tb_ramal.setHorizontalHeaderItem(3, __qtablewidgetitem3)
-        __qtablewidgetitem4 = QTableWidgetItem()
-        self.tb_ramal.setHorizontalHeaderItem(4, __qtablewidgetitem4)
-        __qtablewidgetitem5 = QTableWidgetItem()
-        self.tb_ramal.setHorizontalHeaderItem(5, __qtablewidgetitem5)
-        self.tb_ramal.setObjectName(u"tb_ramal")
+        if (self.tb_ramal.columnCount() < 7):
+            self.tb_ramal.setColumnCount(7)
         font1 = QFont()
         font1.setPointSize(12)
         font1.setBold(True)
-        self.tb_ramal.setFont(font1)
-        self.tb_ramal.setFrameShape(QFrame.Box)
+        __qtablewidgetitem = QTableWidgetItem()
+        __qtablewidgetitem.setFont(font1);
+        self.tb_ramal.setHorizontalHeaderItem(0, __qtablewidgetitem)
+        __qtablewidgetitem1 = QTableWidgetItem()
+        __qtablewidgetitem1.setFont(font1);
+        self.tb_ramal.setHorizontalHeaderItem(1, __qtablewidgetitem1)
+        __qtablewidgetitem2 = QTableWidgetItem()
+        __qtablewidgetitem2.setFont(font1);
+        self.tb_ramal.setHorizontalHeaderItem(2, __qtablewidgetitem2)
+        __qtablewidgetitem3 = QTableWidgetItem()
+        __qtablewidgetitem3.setFont(font1);
+        self.tb_ramal.setHorizontalHeaderItem(3, __qtablewidgetitem3)
+        __qtablewidgetitem4 = QTableWidgetItem()
+        __qtablewidgetitem4.setFont(font1);
+        self.tb_ramal.setHorizontalHeaderItem(4, __qtablewidgetitem4)
+        __qtablewidgetitem5 = QTableWidgetItem()
+        __qtablewidgetitem5.setFont(font1);
+        self.tb_ramal.setHorizontalHeaderItem(5, __qtablewidgetitem5)
+        __qtablewidgetitem6 = QTableWidgetItem()
+        __qtablewidgetitem6.setFont(font1);
+        self.tb_ramal.setHorizontalHeaderItem(6, __qtablewidgetitem6)
+        self.tb_ramal.setObjectName(u"tb_ramal")
+        font2 = QFont()
+        font2.setFamilies([u"Segoe UI"])
+        font2.setPointSize(12)
+        font2.setBold(False)
+        font2.setItalic(False)
+        self.tb_ramal.setFont(font2)
+        self.tb_ramal.setTabletTracking(False)
+        self.tb_ramal.setFocusPolicy(Qt.NoFocus)
+        self.tb_ramal.setContextMenuPolicy(Qt.DefaultContextMenu)
+        self.tb_ramal.setAcceptDrops(False)
+        self.tb_ramal.setAutoFillBackground(True)
+        self.tb_ramal.setStyleSheet(u"font: 12pt \"Segoe UI\";\n"
+"background-color: rgb(236, 236, 236);\n"
+"alternate-background-color: rgb(193, 193, 193);")
+        self.tb_ramal.setFrameShape(QFrame.StyledPanel)
         self.tb_ramal.setFrameShadow(QFrame.Sunken)
+        self.tb_ramal.setLineWidth(3)
+        self.tb_ramal.setMidLineWidth(4)
         self.tb_ramal.setAutoScrollMargin(20)
         self.tb_ramal.setEditTriggers(QAbstractItemView.AnyKeyPressed|QAbstractItemView.DoubleClicked)
+        self.tb_ramal.setAlternatingRowColors(False)
+        self.tb_ramal.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.tb_ramal.setTextElideMode(Qt.ElideMiddle)
         self.tb_ramal.setVerticalScrollMode(QAbstractItemView.ScrollPerItem)
         self.tb_ramal.setHorizontalScrollMode(QAbstractItemView.ScrollPerItem)
         self.tb_ramal.setShowGrid(True)
         self.tb_ramal.setSortingEnabled(True)
+        self.tb_ramal.setWordWrap(True)
         self.tb_ramal.setCornerButtonEnabled(True)
-        self.tb_ramal.horizontalHeader().setMinimumSectionSize(50)
-        self.tb_ramal.horizontalHeader().setDefaultSectionSize(250)
+        self.tb_ramal.horizontalHeader().setCascadingSectionResizes(False)
+        self.tb_ramal.horizontalHeader().setMinimumSectionSize(30)
+        self.tb_ramal.horizontalHeader().setDefaultSectionSize(150)
+        self.tb_ramal.horizontalHeader().setHighlightSections(False)
+        self.tb_ramal.horizontalHeader().setStretchLastSection(False)
         self.tb_ramal.verticalHeader().setVisible(False)
+        self.tb_ramal.verticalHeader().setCascadingSectionResizes(False)
+        self.tb_ramal.verticalHeader().setMinimumSectionSize(50)
+        self.tb_ramal.verticalHeader().setDefaultSectionSize(50)
+        self.tb_ramal.verticalHeader().setHighlightSections(False)
+        self.tb_ramal.verticalHeader().setProperty("showSortIndicator", False)
+        self.tb_ramal.verticalHeader().setStretchLastSection(False)
 
         self.horizontalLayout_3.addWidget(self.tb_ramal)
 
@@ -743,33 +828,41 @@ class Ui_Main(object):
         self.btn_ramais.setText(QCoreApplication.translate("Main", u"Ramais", None))
         self.btn_chamados.setText(QCoreApplication.translate("Main", u"Chamados", None))
         self.btn_about.setText(QCoreApplication.translate("Main", u"Sobre", None))
-        self.cbb_select_setor.setItemText(0, QCoreApplication.translate("Main", u"Flow Docs", None))
-        self.cbb_select_setor.setItemText(1, QCoreApplication.translate("Main", u"Folha", None))
-        self.cbb_select_setor.setItemText(2, QCoreApplication.translate("Main", u"Gerente", None))
-        self.cbb_select_setor.setItemText(3, QCoreApplication.translate("Main", u"Recep\u00e7\u00e3o", None))
-        self.cbb_select_setor.setItemText(4, QCoreApplication.translate("Main", u"Service Desk", None))
-        self.cbb_select_setor.setItemText(5, QCoreApplication.translate("Main", u"SIS - SIE - SAS", None))
-        self.cbb_select_setor.setItemText(6, QCoreApplication.translate("Main", u"SSE - SED - PORTAL - PATRIMONIO", None))
-        self.cbb_select_setor.setItemText(7, QCoreApplication.translate("Main", u"Tribut\u00e1rio", None))
-
         self.le_search_name.setPlaceholderText(QCoreApplication.translate("Main", u"Nome do funcion\u00e1rio", None))
+        self.cbb_select_setor.setItemText(0, "")
+        self.cbb_select_setor.setItemText(1, QCoreApplication.translate("Main", u"FLOWDOCS", None))
+        self.cbb_select_setor.setItemText(2, QCoreApplication.translate("Main", u"FOLHA", None))
+        self.cbb_select_setor.setItemText(3, QCoreApplication.translate("Main", u"GERENTE", None))
+        self.cbb_select_setor.setItemText(4, QCoreApplication.translate("Main", u"RECEP\u00c7\u00c3O", None))
+        self.cbb_select_setor.setItemText(5, QCoreApplication.translate("Main", u"SERVICE DESK", None))
+        self.cbb_select_setor.setItemText(6, QCoreApplication.translate("Main", u"SIS-SIE-SAS", None))
+        self.cbb_select_setor.setItemText(7, QCoreApplication.translate("Main", u"SSE-SED-PORTAL-PATRIMONIO", None))
+        self.cbb_select_setor.setItemText(8, QCoreApplication.translate("Main", u"TRIBUT\u00c1RIO", None))
+
+        self.cbb_select_setor.setPlaceholderText(QCoreApplication.translate("Main", u"Todos", None))
         self.groupBox.setTitle("")
         self.btn_search.setText(QCoreApplication.translate("Main", u"Pesquisar", None))
         self.btn_add.setText(QCoreApplication.translate("Main", u"Adicionar", None))
         self.btn_alter.setText(QCoreApplication.translate("Main", u"Alterar", None))
         self.btn_delete.setText(QCoreApplication.translate("Main", u"Excluir", None))
+        self.groupBox_2.setTitle(QCoreApplication.translate("Main", u"Listagem por", None))
+        self.rb_ausente.setText(QCoreApplication.translate("Main", u"Ausente", None))
+        self.rb_livre.setText(QCoreApplication.translate("Main", u"Livre", None))
+        self.rb_atendimento.setText(QCoreApplication.translate("Main", u"Em Atendimento", None))
         ___qtablewidgetitem = self.tb_ramal.horizontalHeaderItem(0)
         ___qtablewidgetitem.setText(QCoreApplication.translate("Main", u"Nome", None));
         ___qtablewidgetitem1 = self.tb_ramal.horizontalHeaderItem(1)
-        ___qtablewidgetitem1.setText(QCoreApplication.translate("Main", u"Ramal Interno", None));
+        ___qtablewidgetitem1.setText(QCoreApplication.translate("Main", u"Setor", None));
         ___qtablewidgetitem2 = self.tb_ramal.horizontalHeaderItem(2)
-        ___qtablewidgetitem2.setText(QCoreApplication.translate("Main", u"Ramal Externo", None));
+        ___qtablewidgetitem2.setText(QCoreApplication.translate("Main", u"Ramal Interno", None));
         ___qtablewidgetitem3 = self.tb_ramal.horizontalHeaderItem(3)
-        ___qtablewidgetitem3.setText(QCoreApplication.translate("Main", u"Celular", None));
+        ___qtablewidgetitem3.setText(QCoreApplication.translate("Main", u"Ramal Externo", None));
         ___qtablewidgetitem4 = self.tb_ramal.horizontalHeaderItem(4)
-        ___qtablewidgetitem4.setText(QCoreApplication.translate("Main", u"Status", None));
+        ___qtablewidgetitem4.setText(QCoreApplication.translate("Main", u"Celular", None));
         ___qtablewidgetitem5 = self.tb_ramal.horizontalHeaderItem(5)
-        ___qtablewidgetitem5.setText(QCoreApplication.translate("Main", u"A\u00e7\u00e3o", None));
+        ___qtablewidgetitem5.setText(QCoreApplication.translate("Main", u"Status", None));
+        ___qtablewidgetitem6 = self.tb_ramal.horizontalHeaderItem(6)
+        ___qtablewidgetitem6.setText(QCoreApplication.translate("Main", u"A\u00e7\u00e3o", None));
         self.label_2.setText(QCoreApplication.translate("Main", u"Pagina Ramal", None))
         self.lb_commom.setText(QCoreApplication.translate("Main", u"Utilitario de servi\u00e7os - vers\u00e3o 0.0.1", None))
     # retranslateUi

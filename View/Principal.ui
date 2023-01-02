@@ -784,14 +784,17 @@ QPushButton:pressed{
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
-                        <height>100</height>
+                        <height>150</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>100</height>
+                        <height>150</height>
                        </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
                       </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
@@ -818,6 +821,29 @@ QPushButton:pressed{
                        <property name="verticalSpacing">
                         <number>0</number>
                        </property>
+                       <item row="0" column="1">
+                        <widget class="QLineEdit" name="le_search_name">
+                         <property name="minimumSize">
+                          <size>
+                           <width>250</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 255, 255);</string>
+                         </property>
+                         <property name="placeholderText">
+                          <string>Nome do funcionário</string>
+                         </property>
+                        </widget>
+                       </item>
                        <item row="0" column="0">
                         <widget class="QComboBox" name="cbb_select_setor">
                          <property name="minimumSize">
@@ -838,71 +864,70 @@ QPushButton:pressed{
                            <height>0</height>
                           </size>
                          </property>
-                         <property name="styleSheet">
-                          <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
-                         </property>
-                         <item>
-                          <property name="text">
-                           <string>Flow Docs</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Folha</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Gerente</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Recepção</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Service Desk</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>SIS - SIE - SAS</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>SSE - SED - PORTAL - PATRIMONIO</string>
-                          </property>
-                         </item>
-                         <item>
-                          <property name="text">
-                           <string>Tributário</string>
-                          </property>
-                         </item>
-                        </widget>
-                       </item>
-                       <item row="0" column="1">
-                        <widget class="QLineEdit" name="le_search_name">
-                         <property name="minimumSize">
-                          <size>
-                           <width>250</width>
-                           <height>60</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>60</height>
-                          </size>
+                         <property name="autoFillBackground">
+                          <bool>false</bool>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;</string>
+                          <string notr="true">font: 75 16pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(255, 255, 255);
+
+
+</string>
                          </property>
                          <property name="placeholderText">
-                          <string>Nome do funcionário</string>
+                          <string>Todos</string>
                          </property>
+                         <property name="duplicatesEnabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="modelColumn">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <property name="text">
+                           <string/>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>FLOWDOCS</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>FOLHA</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>GERENTE</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>RECEPÇÃO</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>SERVICE DESK</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>SIS-SIE-SAS</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>SSE-SED-PORTAL-PATRIMONIO</string>
+                          </property>
+                         </item>
+                         <item>
+                          <property name="text">
+                           <string>TRIBUTÁRIO</string>
+                          </property>
+                         </item>
                         </widget>
                        </item>
                        <item row="0" column="2">
@@ -1261,6 +1286,110 @@ QPushButton:pressed{
                          </layout>
                         </widget>
                        </item>
+                       <item row="1" column="2">
+                        <widget class="QGroupBox" name="groupBox_2">
+                         <property name="minimumSize">
+                          <size>
+                           <width>450</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>450</width>
+                           <height>60</height>
+                          </size>
+                         </property>
+                         <property name="title">
+                          <string>Listagem por</string>
+                         </property>
+                         <layout class="QGridLayout" name="gridLayout_3">
+                          <item row="0" column="0">
+                           <spacer name="horizontalSpacer_2">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                          <item row="0" column="3">
+                           <widget class="QRadioButton" name="rb_ausente">
+                            <property name="minimumSize">
+                             <size>
+                              <width>100</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>100</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string>Ausente</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="1">
+                           <widget class="QRadioButton" name="rb_livre">
+                            <property name="minimumSize">
+                             <size>
+                              <width>100</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>100</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string>Livre</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="2">
+                           <widget class="QRadioButton" name="rb_atendimento">
+                            <property name="minimumSize">
+                             <size>
+                              <width>140</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>140</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                            <property name="text">
+                             <string>Em Atendimento</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item row="0" column="4">
+                           <spacer name="horizontalSpacer_3">
+                            <property name="orientation">
+                             <enum>Qt::Horizontal</enum>
+                            </property>
+                            <property name="sizeHint" stdset="0">
+                             <size>
+                              <width>40</width>
+                              <height>20</height>
+                             </size>
+                            </property>
+                           </spacer>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
                       </layout>
                      </widget>
                     </item>
@@ -1269,13 +1398,16 @@ QPushButton:pressed{
                       <property name="contextMenuPolicy">
                        <enum>Qt::NoContextMenu</enum>
                       </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
                       <property name="frameShape">
                        <enum>QFrame::StyledPanel</enum>
                       </property>
                       <property name="frameShadow">
                        <enum>QFrame::Raised</enum>
                       </property>
-                      <layout class="QHBoxLayout" name="horizontalLayout_3">
+                      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0">
                        <property name="spacing">
                         <number>0</number>
                        </property>
@@ -1289,27 +1421,61 @@ QPushButton:pressed{
                         <number>55</number>
                        </property>
                        <property name="bottomMargin">
-                        <number>0</number>
+                        <number>15</number>
                        </property>
                        <item>
                         <widget class="QTableWidget" name="tb_ramal">
                          <property name="font">
                           <font>
+                           <family>Segoe UI</family>
                            <pointsize>12</pointsize>
-                           <bold>true</bold>
+                           <italic>false</italic>
+                           <bold>false</bold>
                           </font>
                          </property>
+                         <property name="tabletTracking">
+                          <bool>false</bool>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::NoFocus</enum>
+                         </property>
+                         <property name="contextMenuPolicy">
+                          <enum>Qt::DefaultContextMenu</enum>
+                         </property>
+                         <property name="acceptDrops">
+                          <bool>false</bool>
+                         </property>
+                         <property name="autoFillBackground">
+                          <bool>true</bool>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">font: 12pt &quot;Segoe UI&quot;;
+background-color: rgb(236, 236, 236);
+alternate-background-color: rgb(193, 193, 193);</string>
+                         </property>
                          <property name="frameShape">
-                          <enum>QFrame::Box</enum>
+                          <enum>QFrame::StyledPanel</enum>
                          </property>
                          <property name="frameShadow">
                           <enum>QFrame::Sunken</enum>
+                         </property>
+                         <property name="lineWidth">
+                          <number>3</number>
+                         </property>
+                         <property name="midLineWidth">
+                          <number>4</number>
                          </property>
                          <property name="autoScrollMargin">
                           <number>20</number>
                          </property>
                          <property name="editTriggers">
                           <set>QAbstractItemView::AnyKeyPressed|QAbstractItemView::DoubleClicked</set>
+                         </property>
+                         <property name="alternatingRowColors">
+                          <bool>false</bool>
+                         </property>
+                         <property name="selectionBehavior">
+                          <enum>QAbstractItemView::SelectRows</enum>
                          </property>
                          <property name="textElideMode">
                           <enum>Qt::ElideMiddle</enum>
@@ -1326,46 +1492,123 @@ QPushButton:pressed{
                          <property name="sortingEnabled">
                           <bool>true</bool>
                          </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
                          <property name="cornerButtonEnabled">
                           <bool>true</bool>
                          </property>
+                         <attribute name="horizontalHeaderCascadingSectionResizes">
+                          <bool>false</bool>
+                         </attribute>
                          <attribute name="horizontalHeaderMinimumSectionSize">
-                          <number>50</number>
+                          <number>30</number>
                          </attribute>
                          <attribute name="horizontalHeaderDefaultSectionSize">
-                          <number>250</number>
+                          <number>150</number>
+                         </attribute>
+                         <attribute name="horizontalHeaderHighlightSections">
+                          <bool>false</bool>
+                         </attribute>
+                         <attribute name="horizontalHeaderStretchLastSection">
+                          <bool>false</bool>
                          </attribute>
                          <attribute name="verticalHeaderVisible">
+                          <bool>false</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderCascadingSectionResizes">
+                          <bool>false</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderMinimumSectionSize">
+                          <number>50</number>
+                         </attribute>
+                         <attribute name="verticalHeaderDefaultSectionSize">
+                          <number>50</number>
+                         </attribute>
+                         <attribute name="verticalHeaderHighlightSections">
+                          <bool>false</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+                          <bool>false</bool>
+                         </attribute>
+                         <attribute name="verticalHeaderStretchLastSection">
                           <bool>false</bool>
                          </attribute>
                          <column>
                           <property name="text">
                            <string>Nome</string>
                           </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                            <bold>true</bold>
+                           </font>
+                          </property>
+                         </column>
+                         <column>
+                          <property name="text">
+                           <string>Setor</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                            <bold>true</bold>
+                           </font>
+                          </property>
                          </column>
                          <column>
                           <property name="text">
                            <string>Ramal Interno</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                            <bold>true</bold>
+                           </font>
                           </property>
                          </column>
                          <column>
                           <property name="text">
                            <string>Ramal Externo</string>
                           </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                            <bold>true</bold>
+                           </font>
+                          </property>
                          </column>
                          <column>
                           <property name="text">
                            <string>Celular</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                            <bold>true</bold>
+                           </font>
                           </property>
                          </column>
                          <column>
                           <property name="text">
                            <string>Status</string>
                           </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                            <bold>true</bold>
+                           </font>
+                          </property>
                          </column>
                          <column>
                           <property name="text">
                            <string>Ação</string>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <pointsize>12</pointsize>
+                            <bold>true</bold>
+                           </font>
                           </property>
                          </column>
                         </widget>

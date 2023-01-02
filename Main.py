@@ -1,7 +1,116 @@
 import sys
+
+from View.Cadastro import *
 from View.Principal import *
+from View.MessageBox import *
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 import sqlite3
+
+
+class MessageBox(QMainWindow):
+    def __init__(self, mensagem):
+        super().__init__()
+        self.ui = Ui_MessageBox()
+        self.ui.setupUi(self)
+
+        self.mensagem = mensagem
+        self.ui.lb_message.setText(self.mensagem)
+        self.ui.lb_message.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+
+        self.ui.btn_cancel.clicked.connect(self.close_window)
+
+
+    def close_window(self):
+        self.close()    
+
+
+
+    def button_test(self):
+        self.ui.btn_yes.setVisible(False)
+        
+  
+        
+
+    
+class TelaCadastro(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_TelaCadastro()
+        self.ui.setupUi(self)
+
+        ###botoes###
+
+        self.ui.btn_add.clicked.connect(self.add_employee)
+        self.ui.btn_remove.clicked.connect(self.messagebox_remove)
+
+    
+
+    def connect_db(self):
+        ###conexão com o banco de dados###
+        init = open('connectDB.txt','r')
+        directoryDB = init.read()
+        self.conn = sqlite3.connect(directoryDB)
+
+
+    ###retorna para a tela principal###
+    def closeEvent(self, event):
+        self.return_origem = TelaPrincipal()
+        self.return_origem.show()
+        event.accept()
+
+
+    def add_employee(self):
+
+        nome = self.ui.le_name.text()
+        setor = self.ui.cbb_sector.currentText()
+        ramal_in = self.ui.le_branchIn.text()
+        ramal_ex = self.ui.le_branchEx.text()
+        mask = '(),- '
+        celular = self.ui.le_cellPhone.text()
+        for i in mask:
+            celular = celular.replace(i,'')
+
+        self.connect_db()
+        cursor = self.conn.cursor()
+        sql_exists = (F"""
+            select
+                EXISTS (
+                SELECT
+                    1
+                FROM
+                    tb_funcionario tf
+                WHERE 
+                    Nome = "{nome}"
+                    AND setor = "{setor}"
+                    AND ramal_interno = {ramal_in} )
+        """)
+
+        cursor.execute(sql_exists)
+        result = cursor.fetchall()
+        exist = result[0][0]
+        if exist == 0:
+            sql_insert = f"""
+
+            INSERT INTO tb_funcionario(Nome,setor, ramal_interno,ramal_externo, celular,status) values ('{nome}', '{setor}',{ramal_in},{ramal_ex},'{celular}','Livre')
+            """
+            cursor.execute(sql_insert)
+            self.conn.commit()
+            
+        else:
+            self.messagebox_remove(mess=f"Ja existe um cadastro com estes dados\n Nome: {nome}, Ramal: {ramal_in}")
+            print("Existe")       
+        
+    def messagebox_remove(self,mess):
+        self.mess = mess
+        mensagem = MessageBox(self.mess)
+        mensagem.button_test()
+        mensagem.show()
+        mensagem.exec()
+
+        
+
+
 
 
 class TelaPrincipal(QMainWindow):
@@ -9,18 +118,41 @@ class TelaPrincipal(QMainWindow):
         super().__init__()
         self.ui = Ui_Main()
         self.ui.setupUi(self)
-        self.list_ramal()
+        
 
+        
+
+        self.connect_db()
+        ###instancia da tela de cadastro###
+        self.telaCadastro = TelaCadastro()
         ####Pagina Inicial###
 
         self.ui.pages.setCurrentWidget(self.ui.page_ramal)
 
 
         ####Botões###
-        self.ui.btn_chamados.clicked.connect(self.chamados)
-        self.ui.btn_ramais.clicked.connect(self.ramal)
-        self.ui.btn_ramais.clicked.connect(self.list_ramal)
         self.ui.btn_db.clicked.connect(self.confDB)
+        self.ui.btn_chamados.clicked.connect(self.chamados)
+        self.ui.btn_ramais.clicked.connect(self.list_ramal)
+        
+        self.ui.btn_search.clicked.connect(self.select_ramal)
+
+        self.ui.btn_add.clicked.connect(self.cadastrar)
+        self.list_ramal()
+
+
+
+    def connect_db(self):
+        ###conexão com o banco de dados###
+        init = open('connectDB.txt','r')
+        directoryDB = init.read()
+        self.conn = sqlite3.connect(directoryDB)
+        
+
+
+    def cadastrar(self):
+        self.telaCadastro.show()
+        self.hide()
 
         ###conecxao banco de dados###
     def confDB(self):
@@ -39,64 +171,137 @@ class TelaPrincipal(QMainWindow):
 
     def ramal(self):
         self.ui.pages.setCurrentWidget(self.ui.page_ramal)    
+    
+    def color_row(self):
+        ###Alterando a cor da celula de acordo com o valor###    
+        item = self.ui.tb_ramal
+         
+        for row_color in range(item.rowCount()):
+            text_status = item.item(row_color, 5)
+            status = text_status.text()  
+            if status == "Livre":
+                item.item(row_color, 5).setBackground(QBrush(QColor(63, 235, 10)))
+            elif status =="Atendendo":
+                item.item(row_color, 5).setBackground(QBrush(QColor(170,170,127)))
+            else:
+                item.item(row_color, 5).setBackground(QBrush(QColor(255, 0, 0)))
+
+
+    def button_row(self):
+        item = self.ui.tb_ramal
+        
+        for row_button in range(item.rowCount()):
+            status = item.item(row_button,5).text()
+            if status == "Atendendo":
+                status = "Encerrar atendimento"
+            elif status == "Livre":
+                status = "Iniciar atendimento"    
+            self.button = QPushButton(f"{status}")
+            item.setCellWidget(row_button, 6, self.button)
+            self.button.clicked.connect(self.select_line)
+  
+    def select_line(self):
+        self.connect_db()
+        item = self.ui.tb_ramal
+        ##tabela###
+        row = item.currentRow()
+        nome = item.item(row,0).text()
+        setor = item.item(row,1).text()
+        status= item.item(row,5).text()
+        if status == "Atendendo":
+            status = "Livre"
+        elif status == "Livre":
+            status = "Atendendo"
+        cursor = self.conn.cursor()
+        ##query sql###
+        cursor.execute(f"""
+                UPDATE tb_funcionario
+                SET status = '{status}'
+                WHERE nome = '{nome}'
+                 AND setor = '{setor}'
+        """)
+        self.conn.commit()
+        self.select_ramal()
+        self.color_row()
+        self.button_row() 
+        self.conn.close()
 
     def list_ramal(self):
-        init = open('connectDB.txt','r')
-        directoryDB = init.read()
+        self.connect_db()
+        ##tabela###
         item = self.ui.tb_ramal
-        conn = sqlite3.connect(directoryDB)
-        cursor = conn.cursor()
+        cursor = self.conn.cursor()
+        ##query sql###
         cursor.execute("""
                 SELECT  nome,
+                        setor,
                         ramal_interno,
                         ramal_externo,
                         celular,
                         status
             FROM tb_funcionario""")
         result = cursor.fetchall()
-        item.setColumnCount(6)
+        ###setando as linhas e colunas de acordo com o resultado da consulta###
+        item.setColumnCount(7)
         item.setRowCount((len(result)))
-        
         for i in range(0,len(result)):
-            for j in range(0,5):
+            for j in range(0,6):
                 item.setItem(i,j,QTableWidgetItem(str(result[i][j])))
-                button = QPushButton("Abrir chamado")
-                style = (u"QPushButton{\n"
-"	border-style: none;\n"
-"	border-width: 2px;\n"
-"	font: 75 14pt \"MS Shell Dlg 2\";\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: #0954B2;\n"
-"	border-radius: 15px;\n"
-"	border-bottom-color: rgb(4, 35, 38);\n"
-"	border-right-color:  rgb(4, 35, 38);\n"
-"}\n"
-"QPushButton:hover{\n"
-"	border-style: none;\n"
-"	border-width: 2px;\n"
-"	font: 75 14pt \"MS Shell Dlg 2\";\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color: #4195FF;\n"
-"	border-radius: 5px;\n"
-"	border-bottom-color: rgb(4, 35, 38);\n"
-"	border-right-color:  rgb(4, 35, 38);\n"
-"}\n"
-"\n"
-"\n"
-"QPushButton:pressed{\n"
-"	border-style: none;\n"
-"	border-width: 2px;\n"
-"	font: 75 14pt \"MS Shell Dlg 2\";\n"
-"	color: rgb(255, 255, 255);\n"
-"	background-color:#0954B2;\n"
-"	border-radius: 8px;\n"
-"	border-top-color: rgb(4, 35, 38);\n"
-"	border-left-color:  rgb(4, 35, 38);\n"
-"}")
-                button.setStyleSheet(style)
-                item.setCellWidget(i,5,button)
-        conn.close()        
-   
+        for row_button in range(item.rowCount()):
+            status = item.item(row_button,5).text()
+            if status == "Atendendo":
+                status = "Encerrar atendimento"
+            elif status == "Livre":
+                status = "Iniciar atendimento"    
+            self.button = QPushButton(f"{status}")
+            item.setCellWidget(row_button, 6, self.button)
+            self.button.clicked.connect(self.select_line)
+        self.color_row()
+        self.conn.close()
+
+
+    def select_ramal(self):
+        self.connect_db()
+        item = self.ui.tb_ramal
+        box = self.ui.cbb_select_setor
+        setor = box.currentText()
+        line = self.ui.le_search_name
+        nome = line.text()
+        cursor = self.conn.cursor()
+        cursor.execute(f"""
+                SELECT  nome,
+                        setor,
+                        ramal_interno,
+                        ramal_externo,
+                        celular,
+                        status
+            FROM tb_funcionario t 
+            WHERE t.setor LIKE '%{setor}%' 
+            and t.nome LIKE '%{nome}%'
+            """)
+        result = cursor.fetchall()
+        item.setColumnCount(7)
+        item.setRowCount((len(result)))
+        for i in range(0,len(result)):
+            for j in range(0,6):
+                item.setItem(i,j,QTableWidgetItem(str(result[i][j])))
+        ###Button row####        
+        for row_button in range(item.rowCount()):
+            status = item.item(row_button,5).text()
+            if status == "Atendendo":
+                status = "Encerrar atendimento"
+            elif status == "Livre":
+                status = "Iniciar atendimento"    
+            self.button = QPushButton(f"{status}")
+            item.setCellWidget(row_button, 6, self.button)
+            self.button.clicked.connect(self.select_line)        
+        self.color_row()    
+        self.conn.close()        
+
+            
+     
+
+
 if __name__ =="__main__":
     app = QApplication(sys.argv)
     window = TelaPrincipal()
