@@ -133,12 +133,14 @@ class TelaPrincipal(QMainWindow):
         ####Botões###
         self.ui.btn_db.clicked.connect(self.confDB)
         self.ui.btn_chamados.clicked.connect(self.chamados)
+        self.ui.btn_ramais.clicked.connect(self.ramal)
+        
         self.ui.btn_ramais.clicked.connect(self.list_ramal)
         
         self.ui.btn_search.clicked.connect(self.select_ramal)
 
         self.ui.btn_add.clicked.connect(self.cadastrar)
-        self.list_ramal()
+        
 
 
 

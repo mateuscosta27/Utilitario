@@ -14,9 +14,6 @@ class Conf():
         if not os.path.exists(self.directory):
             os.makedirs(self.directory)
 
-    def get_directory(self):
-        get_dir = (self.directory+'/Utilitario/Banco')
-        return get_dir
         
     def create_database(self):
         conn = sqlite3.connect(self.directory+'/utilitario.db')
@@ -46,8 +43,8 @@ class Conf():
         "IdFuncionario"	INTEGER NOT NULL UNIQUE,
         "Nome"	TEXT,
         "setor"	TEXT,
-        "ramal_interno"	INTEGER,
-        "ramal_externo"	INTEGER,
+        "ramal_interno"	TEXT,
+        "ramal_externo"	TEXT,
         "celular"	TEXT,
         "status"    TEXT,
         PRIMARY KEY("IdFuncionario" AUTOINCREMENT)
@@ -70,11 +67,11 @@ class Conf():
 
         conn.commit()
 
-    get_database = property(dataget = get_directory)   
 
 
-
-
+conf = Conf()
+conf.craate_directory()
+conf.create_database()
 
 
 
