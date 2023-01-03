@@ -1,10 +1,50 @@
 import sys
-
+from View.Chamado import *
 from View.Cadastro import *
 from View.Principal import *
 from View.MessageBox import *
+
 from PySide6.QtWidgets import QApplication, QMainWindow, QFileDialog
 import sqlite3
+
+
+class TelaChamado(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_TelaChamado()
+        self.ui.setupUi(self)
+
+
+
+
+        self.ui.btn_end.clicked.connect(self.expand_window)
+
+
+      
+
+
+
+
+
+    def expand_window(self):
+        self.resize(1275,560)
+    
+ 
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 class MessageBox(QMainWindow):
@@ -13,9 +53,17 @@ class MessageBox(QMainWindow):
         self.ui = Ui_MessageBox()
         self.ui.setupUi(self)
 
+
+
+
+
+
+
+
         self.mensagem = mensagem
         self.ui.lb_message.setText(self.mensagem)
         self.ui.lb_message.setAlignment(Qt.AlignmentFlag.AlignCenter)
+        
 
 
         self.ui.btn_cancel.clicked.connect(self.close_window)
@@ -24,14 +72,11 @@ class MessageBox(QMainWindow):
     def close_window(self):
         self.close()    
 
-
-
     def button_test(self):
         self.ui.btn_yes.setVisible(False)
         
-  
         
-
+  
     
 class TelaCadastro(QMainWindow):
     def __init__(self):
@@ -121,35 +166,40 @@ class TelaPrincipal(QMainWindow):
         
 
         
-
+#################################################################
         self.connect_db()
         ###instancia da tela de cadastro###
         self.telaCadastro = TelaCadastro()
+        self.telaChamao =  TelaChamado()
         ####Pagina Inicial###
 
         self.ui.pages.setCurrentWidget(self.ui.page_ramal)
 
 
+#################################################################
+
         ####Botões###
+      
         self.ui.btn_db.clicked.connect(self.confDB)
-        self.ui.btn_chamados.clicked.connect(self.chamados)
         self.ui.btn_ramais.clicked.connect(self.ramal)
-        
-        self.ui.btn_ramais.clicked.connect(self.list_ramal)
-        
-        self.ui.btn_search.clicked.connect(self.select_ramal)
-
         self.ui.btn_add.clicked.connect(self.cadastrar)
+        self.ui.btn_chamados.clicked.connect(self.chamado)
+        self.ui.btn_chamados.clicked.connect(self.chamados)
+        self.ui.btn_ramais.clicked.connect(self.list_ramal)
+        self.ui.btn_search.clicked.connect(self.select_ramal)
         
-
-
-
+#################################################################
     def connect_db(self):
         ###conexão com o banco de dados###
         init = open('connectDB.txt','r')
         directoryDB = init.read()
         self.conn = sqlite3.connect(directoryDB)
         
+
+    def chamado(self):
+
+        self.telaChamao.show()
+        self.hide()
 
 
     def cadastrar(self):
@@ -164,8 +214,6 @@ class TelaPrincipal(QMainWindow):
         connectionDB = open('connectDB.txt','w')
         connectionDB.write(file_name)
         connectionDB.close()
-
-        
 
         ###paginas###
     def chamados(self):
