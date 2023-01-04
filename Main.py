@@ -14,38 +14,12 @@ class TelaChamado(QMainWindow):
         self.ui = Ui_TelaChamado()
         self.ui.setupUi(self)
 
-
-
-
         self.ui.btn_end.clicked.connect(self.expand_window)
-
-
-      
-
-
-
-
 
     def expand_window(self):
         self.resize(1275,560)
     
  
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class MessageBox(QMainWindow):
     def __init__(self, mensagem):
@@ -53,26 +27,20 @@ class MessageBox(QMainWindow):
         self.ui = Ui_MessageBox()
         self.ui.setupUi(self)
 
-
-
-
-
-
-
-
+        ###formatação###
         self.mensagem = mensagem
         self.ui.lb_message.setText(self.mensagem)
         self.ui.lb_message.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
 
-
+        ##botões##
         self.ui.btn_cancel.clicked.connect(self.close_window)
 
 
     def close_window(self):
         self.close()    
 
-    def button_test(self):
+    def disable_button_yes(self):
         self.ui.btn_yes.setVisible(False)
         
         
@@ -87,7 +55,7 @@ class TelaCadastro(QMainWindow):
         ###botoes###
 
         self.ui.btn_add.clicked.connect(self.add_employee)
-        self.ui.btn_remove.clicked.connect(self.messagebox_remove)
+        self.ui.btn_remove.clicked.connect(self.message_exists)
 
     
 
@@ -141,17 +109,35 @@ class TelaCadastro(QMainWindow):
             """
             cursor.execute(sql_insert)
             self.conn.commit()
+            self.message_sucess_add(mess='Funcionario cadastrado com sucesso!')
             
         else:
-            self.messagebox_remove(mess=f"Ja existe um cadastro com estes dados\n Nome: {nome}, Ramal: {ramal_in}")
+            self.message_exists(mess=f"Ja existe um cadastro com estes dados\n Nome: {nome}, Ramal: {ramal_in}")
             print("Existe")       
-        
-    def messagebox_remove(self,mess):
+
+    def message_sucess_add(self, mess):
         self.mess = mess
         mensagem = MessageBox(self.mess)
-        mensagem.button_test()
+        mensagem.ui.btn_yes.setText("Ok")
+        mensagem.ui.btn_cancel.setVisible(False)
+        mensagem.ui.btn_yes.setGeometry(250,157,100,45)
         mensagem.show()
         mensagem.exec()
+
+
+
+
+    def message_exists(self,mess):
+        self.mess = mess
+        mensagem = MessageBox(self.mess)
+        mensagem.disable_button_yes()
+        mensagem.ui.btn_cancel.setGeometry(250,157,100,45)
+        mensagem.show()
+        mensagem.exec()
+
+
+        
+        
 
         
 
