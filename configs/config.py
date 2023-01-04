@@ -1,5 +1,6 @@
 import sqlite3
 import sys, os
+import json
 from PySide6.QtWidgets import QApplication, QFileDialog, QMessageBox
 
 class Conf():
@@ -10,9 +11,14 @@ class Conf():
     def craate_directory(self):
         app = QApplication(sys.argv)
         selected_directory = QFileDialog.getExistingDirectory(dir="C:/")
-        self.directory = (selected_directory+'/Utilitario/Banco')
-        if not os.path.exists(self.directory):
-            os.makedirs(self.directory)
+        directory = (selected_directory+'/Utilitario/Banco')
+        if not os.path.exists(directory):
+            os.makedirs(directory)
+        dictonary_connection = {"connection":""}
+        dictonary_connection["connection"] = directory
+        inserir = json.dumps(dictonary_connection, indent=4)
+        with open("connection.json", "w") as outfile:
+            outfile.write(inserir)    
 
         
     def create_database(self):
@@ -71,7 +77,7 @@ class Conf():
 
 conf = Conf()
 conf.craate_directory()
-conf.create_database()
+
 
 
 

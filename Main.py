@@ -1,5 +1,6 @@
 import sys
 from View.Chamado import *
+from configs.Transact import *
 from View.Cadastro import *
 from View.Principal import *
 from View.MessageBox import *
@@ -84,7 +85,7 @@ class TelaCadastro(QMainWindow):
         for i in mask:
             celular = celular.replace(i,'')
 
-        self.connect_db()
+        
         cursor = self.conn.cursor()
         sql_exists = (F"""
             select
@@ -153,7 +154,7 @@ class TelaPrincipal(QMainWindow):
 
         
 #################################################################
-        self.connect_db()
+        
         ###instancia da tela de cadastro###
         self.telaCadastro = TelaCadastro()
         self.telaChamao =  TelaChamado()
@@ -175,12 +176,7 @@ class TelaPrincipal(QMainWindow):
         self.ui.btn_search.clicked.connect(self.select_ramal)
         
 #################################################################
-    def connect_db(self):
-        ###conexão com o banco de dados###
-        init = open('connectDB.txt','r')
-        directoryDB = init.read()
-        self.conn = sqlite3.connect(directoryDB)
-        
+   
 
     def chamado(self):
 
@@ -222,22 +218,8 @@ class TelaPrincipal(QMainWindow):
             else:
                 item.item(row_color, 5).setBackground(QBrush(QColor(255, 0, 0)))
 
-
-    def button_row(self):
-        item = self.ui.tb_ramal
-        
-        for row_button in range(item.rowCount()):
-            status = item.item(row_button,5).text()
-            if status == "Atendendo":
-                status = "Encerrar atendimento"
-            elif status == "Livre":
-                status = "Iniciar atendimento"    
-            self.button = QPushButton(f"{status}")
-            item.setCellWidget(row_button, 6, self.button)
-            self.button.clicked.connect(self.select_line)
-  
     def select_line(self):
-        self.connect_db()
+        
         item = self.ui.tb_ramal
         ##tabela###
         row = item.currentRow()
@@ -248,36 +230,21 @@ class TelaPrincipal(QMainWindow):
             status = "Livre"
         elif status == "Livre":
             status = "Atendendo"
-        cursor = self.conn.cursor()
-        ##query sql###
-        cursor.execute(f"""
-                UPDATE tb_funcionario
-                SET status = '{status}'
-                WHERE nome = '{nome}'
-                 AND setor = '{setor}'
-        """)
-        self.conn.commit()
+        connect = Transact()
+        connect.connect()
+        connect.update_status(nome=nome, setor=setor, status=status)
+        connect.fetchall()
         self.select_ramal()
         self.color_row()
-        self.button_row() 
-        self.conn.close()
 
     def list_ramal(self):
-        self.connect_db()
+        
         ##tabela###
         item = self.ui.tb_ramal
-        cursor = self.conn.cursor()
-        ##query sql###
-        cursor.execute("""
-                SELECT  nome,
-                        setor,
-                        ramal_interno,
-                        ramal_externo,
-                        celular,
-                        status
-            FROM tb_funcionario""")
-        result = cursor.fetchall()
-        ###setando as linhas e colunas de acordo com o resultado da consulta###
+        connect = Transact()
+        connect.connect()   
+        connect.list_ramal()
+        result = connect.fetchall()
         item.setColumnCount(7)
         item.setRowCount((len(result)))
         for i in range(0,len(result)):
@@ -292,36 +259,26 @@ class TelaPrincipal(QMainWindow):
             self.button = QPushButton(f"{status}")
             item.setCellWidget(row_button, 6, self.button)
             self.button.clicked.connect(self.select_line)
-        self.color_row()
-        self.conn.close()
+        self.color_row()    
 
 
     def select_ramal(self):
-        self.connect_db()
         item = self.ui.tb_ramal
         box = self.ui.cbb_select_setor
         setor = box.currentText()
         line = self.ui.le_search_name
         nome = line.text()
-        cursor = self.conn.cursor()
-        cursor.execute(f"""
-                SELECT  nome,
-                        setor,
-                        ramal_interno,
-                        ramal_externo,
-                        celular,
-                        status
-            FROM tb_funcionario t 
-            WHERE t.setor LIKE '%{setor}%' 
-            and t.nome LIKE '%{nome}%'
-            """)
-        result = cursor.fetchall()
+
+        ####conexaodb###
+        connect = Transact()
+        connect.connect()   
+        connect.select_ramal(nome=nome,setor=setor)
+        result = connect.fetchall()
         item.setColumnCount(7)
         item.setRowCount((len(result)))
         for i in range(0,len(result)):
             for j in range(0,6):
                 item.setItem(i,j,QTableWidgetItem(str(result[i][j])))
-        ###Button row####        
         for row_button in range(item.rowCount()):
             status = item.item(row_button,5).text()
             if status == "Atendendo":
@@ -330,10 +287,11 @@ class TelaPrincipal(QMainWindow):
                 status = "Iniciar atendimento"    
             self.button = QPushButton(f"{status}")
             item.setCellWidget(row_button, 6, self.button)
-            self.button.clicked.connect(self.select_line)        
-        self.color_row()    
-        self.conn.close()        
-
+            self.button.clicked.connect(self.select_line)
+        self.color_row()        
+        
+            
+    
             
      
 

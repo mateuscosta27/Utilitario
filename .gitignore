@@ -163,9 +163,8 @@ test.py
 
 #Inicio
 
+*/connectDB.txt
 
-.connectDB.txt
-/version.json
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
