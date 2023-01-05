@@ -2,24 +2,52 @@ import sqlite3
 import sys, os
 import json
 from PySide6.QtWidgets import QApplication, QFileDialog, QMessageBox
+from datetime import date
+
+
+
+
+
+
+
+
+
 
 class Conf():
 
 
     def __init__(self):
-        pass
-    def craate_directory(self):
-        app = QApplication(sys.argv)
+        data = date.today()
+        dataAtual = data.strftime('%d/%m/%Y')
+        self.data = dataAtual
+
+        with open("version.json", encoding='utf8') as stringVersion:
+            connection = json.load(stringVersion)
+        version= connection
+        self.version = version
+        
+    def select_local_db(self):
+
         selected_directory = QFileDialog.getExistingDirectory(dir="C:/")
         directory = (selected_directory+'/Utilitario/Banco')
-        if not os.path.exists(directory):
-            os.makedirs(directory)
-        dictonary_connection = {"connection":""}
-        dictonary_connection["connection"] = directory
-        inserir = json.dumps(dictonary_connection, indent=4)
-        with open("connection.json", "w") as outfile:
-            outfile.write(inserir)    
+        self.directory = directory
 
+    def create_directory_db(self):
+
+        dir_db = self.directory  
+        if not os.path.exists(dir_db):
+            os.makedirs(dir_db)
+        sqlite3.connect(dir_db+'/utilitario.db')        
+        self.create_json_db()
+        
+
+
+    def create_json_db(self):        
+        dictonary_connection = {"connection":""}
+        dictonary_connection["connection"] = self.directory+'/utilitario.db'
+        insert = json.dumps(dictonary_connection, indent=4)
+        with open("connection.json", "w") as outfile:
+            outfile.write(insert)    
         
     def create_database(self):
         conn = sqlite3.connect(self.directory+'/utilitario.db')
@@ -72,14 +100,6 @@ class Conf():
         """)
 
         conn.commit()
-
-
-
-conf = Conf()
-conf.craate_directory()
-
-
-
 
 
     

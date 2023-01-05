@@ -1,5 +1,6 @@
 import sys
 from View.Chamado import *
+from configs.config import *
 from configs.Transact import *
 from View.Cadastro import *
 from View.Principal import *
@@ -15,6 +16,9 @@ class TelaChamado(QMainWindow):
         self.ui = Ui_TelaChamado()
         self.ui.setupUi(self)
 
+
+        self.config = Conf()
+        self.ui.lb_commom.setText(f'Todos os direitos reservados | Versão - {self.config.version} | {self.config.data}')
         self.ui.btn_end.clicked.connect(self.expand_window)
 
     def expand_window(self):
@@ -52,6 +56,10 @@ class TelaCadastro(QMainWindow):
         super().__init__()
         self.ui = Ui_TelaCadastro()
         self.ui.setupUi(self)
+
+
+        self.config = Conf()
+        self.ui.lb_commom.setText(f'Todos os direitos reservados | Versão - {self.config.version} | {self.config.data}')
 
         ###botoes###
 
@@ -151,7 +159,8 @@ class TelaPrincipal(QMainWindow):
         self.ui = Ui_Main()
         self.ui.setupUi(self)
         
-
+        self.config = Conf()
+        self.ui.lb_commom.setText(f'Todos os direitos reservados | Versão - {self.config.version} | {self.config.data}')
         
 #################################################################
         
