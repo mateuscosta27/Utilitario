@@ -23,8 +23,13 @@ class Conf():
 
         with open("version.json", encoding='utf8') as stringVersion:
             connection = json.load(stringVersion)
-        version= connection
-        self.version = version
+        principal= connection['VersionPrincipal']
+        confConnection = connection['VersionConfConnection']
+        chamado = connection['VersionChamado']
+
+
+
+        self.principal = principal
         
     def select_local_db(self):
 

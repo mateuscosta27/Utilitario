@@ -1,4 +1,5 @@
 {
-    "Versão": "0.0.1-SNAPSHOT"
-
+    "VersionPrincipal": "0.0.2",
+    "VersionConfConnection": "0.0.1-SNAPSHOT",
+    "VersionChamado": "0.0.1-SNAPSHOT"
 }

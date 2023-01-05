@@ -17,7 +17,7 @@ class ConfConnection(QMainWindow):
 
         self.ui.btn_localDB.clicked.connect(self.localdb)
 
-        self.ui.lb_commom.setText(f'Todos os direitos reservados | {self.config.version} | {self.config.data}')
+        self.ui.lb_commom.setText(f'Todos os direitos reservados | {self.config.} | {self.config.data}')
 
 
     def localdb(self):
