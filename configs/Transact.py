@@ -136,7 +136,6 @@ class Transact():
         self.status = status
         self.nome = nome
         self.setor = setor
-        self.box
         self.execute(
             f"""
                 UPDATE tb_funcionario
@@ -146,6 +145,65 @@ class Transact():
         """
         )
         self.persist()
+
+
+
+    def check_emplyee(self, nome,setor,ramal_in):
+
+        self.nome = nome
+        self.setor = setor
+        self.ramal_in = ramal_in
+        sql_exist=(
+            F"""
+            select
+                EXISTS (
+                SELECT
+                    1
+                FROM
+                    tb_funcionario tf
+                WHERE 
+                    Nome = "{nome}"
+                    AND setor = "{setor}"
+                    AND ramal_interno = {ramal_in} )
+        """
+        )
+
+        self.execute(sql_exist)
+            
+
+    def insert_employee(self,nome,setor,ramal_in, ramal_ex, celular):
+        self.nome = nome
+        self.setor = setor
+        self.ramal_in = ramal_in
+        self.ramal_ex = ramal_ex
+        self.celular = celular
+        status = 'Livre'
+        sql_insert =(
+            f"""
+
+            INSERT INTO tb_funcionario(
+                Nome,
+                setor, 
+                ramal_interno,
+                ramal_externo,
+                celular,
+                status) 
+                values (
+                        '{nome}', 
+                        '{setor}',
+                        '{ramal_in}',
+                        '{ramal_ex}',
+                        '{celular}',
+                        {status})
+            """
+
+        )
+        self.execute(sql_insert)
+        
+        
+
+        
+    
 
         
 

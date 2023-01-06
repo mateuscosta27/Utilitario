@@ -83,6 +83,7 @@ class TelaCadastro(QMainWindow):
 
 
     def add_employee(self):
+        connect = Transact()
 
         nome = self.ui.le_name.text()
         setor = self.ui.cbb_sector.currentText()
@@ -93,36 +94,17 @@ class TelaCadastro(QMainWindow):
         for i in mask:
             celular = celular.replace(i,'')
 
-        
-        cursor = self.conn.cursor()
-        sql_exists = (F"""
-            select
-                EXISTS (
-                SELECT
-                    1
-                FROM
-                    tb_funcionario tf
-                WHERE 
-                    Nome = "{nome}"
-                    AND setor = "{setor}"
-                    AND ramal_interno = {ramal_in} )
-        """)
-
-        cursor.execute(sql_exists)
-        result = cursor.fetchall()
+        connect.connect()
+        connect.check_emplyee(nome=nome,setor=setor, ramal_in=ramal_in)
+        result = connect.fetchall()
         exist = result[0][0]
         if exist == 0:
-            sql_insert = f"""
-
-            INSERT INTO tb_funcionario(Nome,setor, ramal_interno,ramal_externo, celular,status) values ('{nome}', '{setor}',{ramal_in},{ramal_ex},'{celular}','Livre')
-            """
-            cursor.execute(sql_insert)
-            self.conn.commit()
+            connect.insert_employee(nome=nome,setor=setor,ramal_in=ramal_in,ramal_ex=ramal_ex, celular=celular)
+            connect.persist()
             self.message_sucess_add(mess='Funcionario cadastrado com sucesso!')
             
         else:
-            self.message_exists(mess=f"Ja existe um cadastro com estes dados\n Nome: {nome}, Ramal: {ramal_in}")
-            print("Existe")       
+            self.message_exists(mess=f"Ja existe um cadastro com estes dados\n Nome: {nome}, Ramal: {ramal_in}")      
 
     def message_sucess_add(self, mess):
         self.mess = mess
@@ -146,13 +128,6 @@ class TelaCadastro(QMainWindow):
 
 
         
-        
-
-        
-
-
-
-
 class TelaPrincipal(QMainWindow):
     def __init__(self):
         super().__init__()
@@ -244,7 +219,16 @@ class TelaPrincipal(QMainWindow):
         connect.update_status(nome=nome, setor=setor, status=status)
         connect.fetchall()
         self.select_ramal()
-        self.color_row()
+        for row_button in range(item.rowCount()):
+            status = item.item(row_button,5).text()
+            if status == "Atendendo":
+                status = "Encerrar atendimento"
+            elif status == "Livre":
+                status = "Iniciar atendimento"    
+            self.button = QPushButton(f"{status}")
+            item.setCellWidget(row_button, 6, self.button)
+            self.button.clicked.connect(self.select_line)
+        self.color_row()  
 
     def list_ramal(self):
         
