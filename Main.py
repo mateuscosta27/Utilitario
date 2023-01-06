@@ -18,7 +18,7 @@ class TelaChamado(QMainWindow):
 
 
         self.config = Conf()
-        self.ui.lb_commom.setText(f'Todos os direitos reservados | Versão - {self.config.version} | {self.config.data}')
+        self.ui.lb_commom.setText(f'Todos os direitos reservados | Versão - {self.config.chamado} | {self.config.data}')
         self.ui.btn_end.clicked.connect(self.expand_window)
 
     def expand_window(self):
@@ -59,7 +59,7 @@ class TelaCadastro(QMainWindow):
 
 
         self.config = Conf()
-        self.ui.lb_commom.setText(f'Todos os direitos reservados | Versão - {self.config.version} | {self.config.data}')
+        self.ui.lb_commom.setText(f'Todos os direitos reservados | Versão - {self.config.principal} | {self.config.data}')
 
         ###botoes###
 
@@ -160,7 +160,7 @@ class TelaPrincipal(QMainWindow):
         self.ui.setupUi(self)
         
         self.config = Conf()
-        self.ui.lb_commom.setText(f'Todos os direitos reservados | Versão - {self.config.version} | {self.config.data}')
+        self.ui.lb_commom.setText(f'Todos os direitos reservados | Versão - {self.config.principal} | {self.config.data}')
         
 #################################################################
         

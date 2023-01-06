@@ -22,14 +22,22 @@ class Conf():
         self.data = dataAtual
 
         with open("version.json", encoding='utf8') as stringVersion:
-            connection = json.load(stringVersion)
-        principal= connection['VersionPrincipal']
-        confConnection = connection['VersionConfConnection']
-        chamado = connection['VersionChamado']
-
-
+            version = json.load(stringVersion)
+        principal= version['VersionPrincipal']
+        confConnection = version['VersionConfConnection']
+        chamado = version['VersionChamado']
 
         self.principal = principal
+        self.chamado = chamado
+        self.confConnection = confConnection
+
+    def version_update(self):
+        with open("version.json", encoding="utf-8") as stringversion:
+            version = json.load(stringversion)
+            self.principal = '0.0.2-SNAPSHOT'
+            self.chamado = '0.0.1-SNAPSHOT'
+            self.confConnection = '0.0.1-SNAPSHOT'
+                
         
     def select_local_db(self):
 
