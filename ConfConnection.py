@@ -28,6 +28,7 @@ class ConfConnection(QMainWindow):
             self.ui.btn_localDB.setVisible(False)
             self.ui.btn_testConnection.setGeometry(520,80,150,45)
         self.ui.btn_testConnection.clicked.connect(self.config.create_directory_db)
+        self.ui.btn_testConnection.clicked.connect(self.config.create_tables)
         self.ui.btn_testConnection.clicked.connect(self.test_connection_status)
         self.ui.le_localDb.setDisabled(True)
         
